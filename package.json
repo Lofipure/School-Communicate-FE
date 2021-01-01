@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@ant-design/pro-layout": "^6.5.0",
-    "@byte-design/icon": "^0.1.21",
+    "@byte-design/icons": "^0.12.0",
     "@umijs/preset-react": "1.x",
     "antd": "^4.9.4",
     "axios": "^0.21.1",

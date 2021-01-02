@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Layout, Menu, Modal, Form, Input, message } from 'antd';
-import { Oceanengine, User, Key } from '@byte-design/icons';
+import { Oceanengine, User, Key, Me, Logout } from '@byte-design/icons';
 import './index.less';
 
 interface ILoginFormData {
@@ -35,6 +35,54 @@ const MyHeader = (props: IPorps) => {
     console.log(loginUserInfo);
     setLoginModalStatus(false);
     message.success('Login Success.');
+    setTimeout(() => {
+      window.location.href = '/main';
+      localStorage.setItem('email', loginUserInfo?.email || '');
+    }, 500);
+  };
+
+  const render = (): React.ReactNode => {
+    if (props.type === 'WelcomePage') {
+      return (
+        <React.Fragment>
+          <Menu.Item
+            onClick={() => {
+              setLoginModalStatus(true);
+            }}
+          >
+            Login
+          </Menu.Item>
+          <Menu.Item
+            onClick={() => {
+              window.location.href = '/register';
+            }}
+          >
+            Register
+          </Menu.Item>
+        </React.Fragment>
+      );
+    } else if (props.type === 'RegisterPage') {
+      return null;
+    } else {
+      return (
+        <React.Fragment>
+          <Menu.Item className="main-page-menu-item">
+            <Me className="main-page-icon" />
+            <span>Mine</span>
+          </Menu.Item>
+          <Menu.Item
+            className="main-page-menu-item"
+            onClick={() => {
+              window.location.href = '/';
+              localStorage.removeItem('email');
+            }}
+          >
+            <Logout className="main-page-icon" />
+            <span>DropOut</span>
+          </Menu.Item>
+        </React.Fragment>
+      );
+    }
   };
   return (
     <Layout.Header className="header">
@@ -85,27 +133,10 @@ const MyHeader = (props: IPorps) => {
         }}
       >
         <Oceanengine theme="outline" />
-        <span className="header-title">西安科技大学-校友汇</span>
+        <span className="header-title">XUST-School Mate Family</span>
       </div>
       <Menu theme="dark" mode="horizontal" className="header-menu">
-        {props.type === 'MainPage' ? (
-          <React.Fragment>
-            <Menu.Item
-              onClick={() => {
-                setLoginModalStatus(true);
-              }}
-            >
-              Login
-            </Menu.Item>
-            <Menu.Item
-              onClick={() => {
-                window.location.href = '/register';
-              }}
-            >
-              Register
-            </Menu.Item>
-          </React.Fragment>
-        ) : null}
+        {render()}
       </Menu>
     </Layout.Header>
   );

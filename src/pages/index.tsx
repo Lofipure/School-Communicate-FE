@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react';
 import './index.less';
 
 import MyHeader from '@/Components/MyHeader';
-import { Layout, Form, Input, Row, Col, Select } from 'antd';
+import { Layout } from 'antd';
 
 const MainPage = () => {
   React.useEffect(() => {
@@ -11,7 +11,7 @@ const MainPage = () => {
   return (
     <div className="main-page">
       <Layout>
-        <MyHeader type="MainPage" />
+        <MyHeader type="WelcomePage" />
         <Layout.Content className="main-page-content">
           <h1>Welcome To Use XUST School Mate System</h1>
         </Layout.Content>

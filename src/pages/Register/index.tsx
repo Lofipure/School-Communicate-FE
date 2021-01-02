@@ -26,6 +26,9 @@ const RegisterPage = () => {
     email: '',
   });
 
+  React.useEffect(() => {
+    document.title = 'Register';
+  }, []);
   const handleUserInfoChange = (
     e: ChangeEvent<HTMLInputElement>,
     type: string,

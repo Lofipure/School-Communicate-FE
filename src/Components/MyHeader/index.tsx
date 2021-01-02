@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Layout, Menu, Modal, Form, Input, message } from 'antd';
-import { SmartOptimization } from '@byte-design/icons';
+import { Oceanengine, User, Key } from '@byte-design/icons';
 import './index.less';
 
 interface ILoginFormData {
@@ -59,6 +59,7 @@ const MyHeader = (props: IPorps) => {
               onChange={(e) => {
                 handleInputChange(e, 'email');
               }}
+              prefix={<User />}
             ></Input>
           </Form.Item>
           <Form.Item
@@ -72,6 +73,7 @@ const MyHeader = (props: IPorps) => {
               onChange={(e) => {
                 handleInputChange(e, 'password');
               }}
+              prefix={<Key />}
             ></Input.Password>
           </Form.Item>
         </Form>
@@ -82,7 +84,7 @@ const MyHeader = (props: IPorps) => {
           window.location.href = '/';
         }}
       >
-        <SmartOptimization theme="outline" />
+        <Oceanengine theme="outline" />
         <span className="header-title">西安科技大学-校友汇</span>
       </div>
       <Menu theme="dark" mode="horizontal" className="header-menu">

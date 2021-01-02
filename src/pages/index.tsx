@@ -4,29 +4,17 @@ import './index.less';
 import MyHeader from '@/Components/MyHeader';
 import { Layout, Form, Input, Row, Col, Select } from 'antd';
 
-interface IRegisterUserInfo {
-  name: string;
-  studentID: string;
-  major: number;
-  college: number;
-  email: string;
-  telephone: string;
-}
-
 const MainPage = () => {
-  const [
-    registerUserInfo,
-    setRegisterUserInfo,
-  ] = React.useState<IRegisterUserInfo>();
-
-  const handleUserInfoChange = (
-    e: ChangeEvent<HTMLInputElement>,
-    type: string,
-  ) => {};
+  React.useEffect(() => {
+    document.title = 'Welcome';
+  }, []);
   return (
     <div className="main-page">
       <Layout>
         <MyHeader type="MainPage" />
+        <Layout.Content className="main-page-content">
+          <h1>Welcome To Use XUST School Mate System</h1>
+        </Layout.Content>
       </Layout>
     </div>
   );

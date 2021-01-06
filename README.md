@@ -1,15 +1,4 @@
-# umi project
+## 校友汇
 
-## Getting Started
+### 功能：
 
-Install dependencies,
-
-```bash
-$ yarn
-```
-
-Start the dev server,
-
-```bash
-$ yarn start
-```

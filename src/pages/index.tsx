@@ -1,23 +1,29 @@
-import React, { ChangeEvent } from 'react';
+import * as React from 'react';
+import UserInfoForm from '@/Components/UserInfoForm';
+import { Modal } from 'antd';
 import './index.less';
 
-import MyHeader from '@/Components/MyHeader';
-import { Layout } from 'antd';
+import filterConfig from './filterConfig.index';
 
-const MainPage = () => {
-  React.useEffect(() => {
-    document.title = 'Welcome';
-  }, []);
+const IndexPage = () => {
+  const loginForm = React.useRef<React.ElementRef<typeof UserInfoForm>>(null);
   return (
-    <div className="main-page">
-      <Layout>
-        <MyHeader type="WelcomePage" />
-        <Layout.Content className="main-page-content">
-          <h1>Welcome To Use XUST School Mate System</h1>
-        </Layout.Content>
-      </Layout>
+    <div className="index-page">
+      <Modal
+        visible={true}
+        onOk={() => {
+          console.log(loginForm.current?.getFieldValues());
+        }}
+      >
+        <UserInfoForm
+          className="loginForm"
+          filters={filterConfig}
+          layout="vertical"
+          ref={loginForm}
+        />
+      </Modal>
     </div>
   );
 };
 
-export default MainPage;
+export default IndexPage;

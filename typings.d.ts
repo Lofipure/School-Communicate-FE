@@ -8,3 +8,13 @@ declare module '*.svg' {
   const url: string;
   export default url;
 }
+
+interface FilterConfig {
+  key: string;
+  label: string;
+  options?: {
+    [key: string]: any;
+  };
+  span?: number;
+  widget: React.ReactNode;
+}

@@ -41,7 +41,7 @@ const UserInfoForm = React.forwardRef<UserInfoFormHanle, UserInfoFormProps>(
         layout={props.layout}
         form={userInfoForm}
       >
-        <Row justify="center" align="middle">
+        <Row justify="space-around" align="middle">
           {widgetRender()}
         </Row>
       </Form>

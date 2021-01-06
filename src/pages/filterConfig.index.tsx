@@ -24,7 +24,7 @@ const filterConfig: FilterConfig[] = [
       rules: [{ required: true, message: 'Password is required' }],
     },
     span: 20,
-    widget: <Input.Password allowClear />,
+    widget: <Input.Password allowClear autoComplete="" />,
   },
 ];
 

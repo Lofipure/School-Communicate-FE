@@ -18,3 +18,12 @@ interface FilterConfig {
   span?: number;
   widget: React.ReactNode;
 }
+
+interface ActionType {
+  type: string;
+  value?: any;
+}
+
+interface StateType {
+  loginModalStatus: boolean;
+}

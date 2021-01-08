@@ -27,3 +27,8 @@ interface ActionType {
 interface StateType {
   loginModalStatus: boolean;
 }
+
+interface APIProps {
+  url: string | ((params: any) => string);
+  method: string;
+}

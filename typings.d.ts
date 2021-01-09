@@ -30,5 +30,5 @@ interface StateType {
 
 interface APIProps {
   url: string | ((params: any) => string);
-  method: string;
+  method: Method;
 }

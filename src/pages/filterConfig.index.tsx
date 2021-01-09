@@ -4,7 +4,7 @@ import { Input } from 'antd';
 const filterConfig: FilterConfig[] = [
   {
     key: 'email',
-    label: 'Email',
+    label: '邮箱',
     options: {
       rules: [
         { required: true, message: 'Email is required' },
@@ -19,7 +19,7 @@ const filterConfig: FilterConfig[] = [
   },
   {
     key: 'password',
-    label: 'Password',
+    label: '密码',
     options: {
       rules: [{ required: true, message: 'Password is required' }],
     },

@@ -25,7 +25,7 @@ const HeaderMenu: React.FC<{}> = () => {
               dispatch(loginModalStatusActionCreator(true));
             }}
           >
-            Login
+            登录
           </Menu.Item>
         )}
         <Menu.Item
@@ -36,7 +36,7 @@ const HeaderMenu: React.FC<{}> = () => {
             history.push('/register');
           }}
         >
-          Register
+          注册
         </Menu.Item>
       </Menu>
     </React.Fragment>

@@ -12,7 +12,7 @@ const MyTitle: React.FC<{}> = () => {
       }}
     >
       <Avatar style={{ backgroundColor: 'red' }}>L</Avatar>
-      <span className="header-title-text">Name</span>
+      <span className="header-title-text">校友会</span>
     </span>
   );
 };

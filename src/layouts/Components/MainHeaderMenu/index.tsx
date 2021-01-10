@@ -54,7 +54,12 @@ const HeaderMenu: React.FC<{}> = () => {
           history.location.pathname !== '/register' && (
             <>
               {mainPageConfig.map((item) => (
-                <Menu.Item key={item.key} title={item.title} icon={item.icon}>
+                <Menu.Item
+                  key={item.key}
+                  title={item.title}
+                  icon={item.icon}
+                  onClick={item.onClick}
+                >
                   {item.text}
                 </Menu.Item>
               ))}

@@ -14,8 +14,8 @@ export enum MajorEnums {
 }
 
 export const College: Record<number, string> = {
-  [CollegeEnums.communicateCollege]: '通信学院',
-  [CollegeEnums.computerCollege]: '计算机学院',
+  [CollegeEnums.communicateCollege]: '通信与信息工程学院',
+  [CollegeEnums.computerCollege]: '计算机科学与技术学院',
 };
 
 export const Major: Record<number, string> = {

@@ -26,8 +26,8 @@ const IndexPage = () => {
         history.push('/register');
       } else if (res.data == 1) {
         message.success('登录成功');
-        history.push('/main');
         localStorage.setItem('userInfo', JSON.stringify(storageData));
+        history.push('/main');
       } else {
         message.error('密码错误');
       }

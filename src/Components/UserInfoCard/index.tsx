@@ -1,27 +1,63 @@
 import * as React from 'react';
-import {} from 'antd';
-import { PLACEHOLDER } from '@/constant';
+import { Avatar, Tag } from 'antd';
 import { College, Major } from '@/constant/enum';
-export interface UserInfoCardProps {
-  name?: string;
-  email?: string;
-  grade?: string;
-  location?: string;
-  major?: string;
-  college?: string;
-  telephone?: string;
-}
+import axios from 'axios';
+import { getUserByEmailApi } from '@/Api';
+import {
+  DribbbleOutlined,
+  CodepenCircleOutlined,
+  UserOutlined,
+  EnvironmentOutlined,
+} from '@ant-design/icons';
+import './index.less';
 
-const UserInfoCard: React.FC<UserInfoCardProps> = (
-  props: UserInfoCardProps,
-) => {
+type UserInfoType = {
+  name: string;
+  email: string;
+  telephone: string;
+  college: string;
+  major: string;
+  studentID: string;
+  grade: string;
+  location: string;
+};
+
+const UserInfoCard: React.FC = () => {
+  const [userInfo, setUserInfo] = React.useState<UserInfoType>();
+
   React.useEffect(() => {
-    console.log(props);
-  });
+    const { email } = JSON.parse(localStorage.getItem('userInfo') || '');
+    axios({
+      method: getUserByEmailApi.method,
+      url: getUserByEmailApi.url + `?email=${email}`,
+    }).then((res) => {
+      setUserInfo(res.data[0]);
+    });
+  }, []);
   return (
     <div className="user-info-card">
-      <div>{props.college ? College[props.college] : PLACEHOLDER}</div>
-      <div>{props.major ? Major[props.major] : PLACEHOLDER}</div>
+      <div className="user-info-row">
+        <Avatar size="large" icon={<UserOutlined />} />
+      </div>
+      <div className="user-info-row">
+        <span className="user-info-row-inner">{userInfo?.name}</span>
+        <span className="user-info-row-inner">{userInfo?.grade}级</span>
+      </div>
+      <div className="user-info-row">
+        <Tag color="success" icon={<DribbbleOutlined />}>
+          {College[userInfo?.college || '']}
+        </Tag>
+      </div>
+      <div className="user-info-row">
+        <Tag color="processing" icon={<CodepenCircleOutlined />}>
+          {Major[userInfo?.major || '']}
+        </Tag>
+      </div>
+      <div className="user-info-row">
+        <Tag color="magenta" icon={<EnvironmentOutlined />}>
+          {userInfo?.location}
+        </Tag>
+      </div>
     </div>
   );
 };

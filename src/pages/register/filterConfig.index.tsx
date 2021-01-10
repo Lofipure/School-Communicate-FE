@@ -40,11 +40,11 @@ const cascaderOptions: CascaderOptionsProps[] = [
     children: [
       {
         label: '软件工程',
-        value: '1',
+        value: '6',
       },
       {
         label: '计算机科学与技术',
-        value: '2',
+        value: '7',
       },
     ],
   },

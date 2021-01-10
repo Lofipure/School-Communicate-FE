@@ -3,6 +3,7 @@ import { Row, Col, Form } from 'antd';
 
 interface UserInfoFormHanle {
   getFieldValues: () => object;
+  resetForm: () => void;
 }
 
 export interface UserInfoFormProps {
@@ -30,8 +31,10 @@ const UserInfoForm = React.forwardRef<UserInfoFormHanle, UserInfoFormProps>(
     React.useImperativeHandle(ref, () => ({
       getFieldValues: () => {
         let retData = userInfoForm.getFieldsValue();
-        userInfoForm.resetFields();
         return retData;
+      },
+      resetForm: () => {
+        userInfoForm.resetFields();
       },
     }));
 

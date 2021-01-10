@@ -1,10 +1,10 @@
 import * as React from 'react';
 import UserInfoForm from '@/Components/UserInfoForm';
-import { Modal } from 'antd';
+import { message, Modal } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginModalStatusActionCreator } from '@/store/actionCreator';
 import './index.less';
-
+import { history } from 'umi';
 import filterConfig from './filterConfig.index';
 import axios, { AxiosResponse } from 'axios';
 import { loginApi } from '@/Api';
@@ -20,7 +20,17 @@ const IndexPage = () => {
       method: loginApi.method,
       data: loginForm.current?.getFieldValues(),
     }).then((res: AxiosResponse) => {
-      console.log(res.data);
+      const storageData = loginForm.current?.getFieldValues() || {};
+      if (res.data == 2) {
+        message.warn('用户不存在，请先注册');
+        history.push('/register');
+      } else if (res.data == 1) {
+        message.success('登录成功');
+        history.push('/main');
+        localStorage.setItem('userInfo', JSON.stringify(storageData));
+      } else {
+        message.error('密码错误');
+      }
     });
   };
   const loginForm = React.useRef<React.ElementRef<typeof UserInfoForm>>(null);
@@ -43,7 +53,7 @@ const IndexPage = () => {
           ref={loginForm}
         />
       </Modal>
-      MainPage
+      校友会主页？
     </div>
   );
 };

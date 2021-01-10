@@ -59,7 +59,7 @@ const filterConfig: FilterConfig[] = [
         { required: true, message: '请输入邮箱' },
         {
           pattern: /^([a-zA-Z0-9\_\-\.])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/,
-          message: 'Check email pattern',
+          message: '请检查格式',
         },
       ],
     },
@@ -106,7 +106,7 @@ const filterConfig: FilterConfig[] = [
     widget: <Input allowClear />,
   },
   {
-    key: 'majorInfo',
+    key: 'collegeAndMajor',
     label: '学院 / 专业',
     span: 10,
     widget: <Cascader placeholder="" options={cascaderOptions} allowClear />,

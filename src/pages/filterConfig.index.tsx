@@ -7,7 +7,7 @@ const filterConfig: FilterConfig[] = [
     label: '邮箱',
     options: {
       rules: [
-        { required: true, message: 'Email is required' },
+        { required: true, message: '请输入邮箱' },
         {
           pattern: /^([a-zA-Z0-9\_\-\.])+@([a-zA-Z0-9_-])+((\.[a-zA-Z0-9_-]{2,3}){1,2})$/,
           message: 'Check email pattern',
@@ -21,7 +21,7 @@ const filterConfig: FilterConfig[] = [
     key: 'password',
     label: '密码',
     options: {
-      rules: [{ required: true, message: 'Password is required' }],
+      rules: [{ required: true, message: '请输入密码' }],
     },
     span: 20,
     widget: <Input.Password allowClear autoComplete="" />,

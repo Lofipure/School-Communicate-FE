@@ -8,10 +8,17 @@ const MyTitle: React.FC<{}> = () => {
     <span
       className="header-title"
       onClick={() => {
-        history.push('/');
+        if (
+          history.location.pathname === '/' ||
+          history.location.pathname === '/register'
+        ) {
+          history.push('/');
+        } else {
+          history.push('/main');
+        }
       }}
     >
-      <Avatar style={{ backgroundColor: 'red' }}>L</Avatar>
+      <Avatar style={{ backgroundColor: '#999' }}>L</Avatar>
       <span className="header-title-text">校友会</span>
     </span>
   );

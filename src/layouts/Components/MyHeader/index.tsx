@@ -1,6 +1,6 @@
 import * as React from 'react';
 import MyTitle from '../MyTitle';
-import HeaderMenu from '../HeaderMenu';
+import HeaderMenu from '../MainHeaderMenu';
 import { Layout } from 'antd';
 const { Header } = Layout;
 

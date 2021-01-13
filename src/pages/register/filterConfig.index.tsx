@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Input, Cascader } from 'antd';
+import { FilterConfig } from 'typings';
 
 interface CascaderOptionsProps {
   label: string;
@@ -7,7 +8,7 @@ interface CascaderOptionsProps {
   children?: CascaderOptionsProps[];
 }
 
-const cascaderOptions: CascaderOptionsProps[] = [
+export const cascaderOptions: CascaderOptionsProps[] = [
   {
     label: '通信学院',
     value: '1',

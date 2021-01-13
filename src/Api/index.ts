@@ -26,10 +26,16 @@ const getAllArticleByTagApi: AxiosRequestConfig = {
   method: 'GET',
 };
 
+const updateUserInfo: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/updateUserInfo`,
+  method: 'POST',
+};
+
 export {
   loginApi,
   reigsterApi,
   getUserByEmailApi,
   getAllArticleApi,
   getAllArticleByTagApi,
+  updateUserInfo,
 };

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Row, Col, Form } from 'antd';
-import { FilterConfig } from 'typings';
+import { FilterConfig, UserInfo } from 'typings';
+import { ColProps } from 'antd/lib/col';
 
 interface UserInfoFormHanle {
   getFieldValues: () => object;
@@ -11,6 +12,9 @@ export interface UserInfoFormProps {
   className?: string;
   filters: FilterConfig[];
   layout: 'horizontal' | 'inline' | 'vertical';
+  initialValues?: UserInfo;
+  labelCol?: ColProps;
+  wrapperCol?: ColProps;
 }
 
 const UserInfoForm = React.forwardRef<UserInfoFormHanle, UserInfoFormProps>(
@@ -22,7 +26,7 @@ const UserInfoForm = React.forwardRef<UserInfoFormHanle, UserInfoFormProps>(
         const { key, label, options, span, widget } = item;
         return (
           <Col span={span} key={key}>
-            <Form.Item name={key} label={label} {...options}>
+            <Form.Item name={key} label={label} {...options} colon={false}>
               {widget}
             </Form.Item>
           </Col>
@@ -44,6 +48,9 @@ const UserInfoForm = React.forwardRef<UserInfoFormHanle, UserInfoFormProps>(
         className={props.className}
         layout={props.layout}
         form={userInfoForm}
+        initialValues={props.initialValues}
+        labelCol={props.labelCol}
+        wrapperCol={props.wrapperCol}
       >
         <Row justify="space-around" align="middle">
           {widgetRender()}

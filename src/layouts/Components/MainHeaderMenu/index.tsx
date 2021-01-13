@@ -15,12 +15,7 @@ const HeaderMenu: React.FC<{}> = () => {
 
   return (
     <React.Fragment>
-      <Menu
-        mode="horizontal"
-        className="header-menu"
-        theme="dark"
-        defaultSelectedKeys={['playground']}
-      >
+      <Menu mode="horizontal" className="header-menu" theme="dark">
         {history.location.pathname === '/' && (
           <>
             {indexMainPageConfig.map((item) => (

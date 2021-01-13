@@ -5,12 +5,13 @@ import store from '@/store';
 import { history } from 'umi';
 import MyHeader from '../Components/MyHeader';
 import SideBar from '../Components/SideBar';
+import './index.less';
 
 const { Content, Sider } = Layout;
 const LayoutContainer: React.FC<{}> = (props) => {
   return (
     <Provider store={store}>
-      <Layout>
+      <Layout className="root-container">
         <MyHeader />
         <Layout>
           {history.location.pathname != '/' &&

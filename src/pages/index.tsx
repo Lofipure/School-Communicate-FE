@@ -1,5 +1,5 @@
 import * as React from 'react';
-import UserInfoForm from '@/Components/UserInfoForm';
+import UserInfoForm from '@/Components/InfoForm';
 import { message, Modal } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { loginModalStatusActionCreator } from '@/store/actionCreator';
@@ -8,6 +8,7 @@ import { history } from 'umi';
 import filterConfig from './filterConfig.index';
 import axios, { AxiosResponse } from 'axios';
 import { loginApi } from '@/Api';
+import { StateType } from 'typings';
 
 const IndexPage = () => {
   const loginModalStatus: boolean = useSelector(
@@ -37,6 +38,7 @@ const IndexPage = () => {
   return (
     <div className="index-page">
       <Modal
+        title="欢迎您登录西安科技大学校友会"
         visible={loginModalStatus}
         onCancel={() => {
           dispatch(loginModalStatusActionCreator(false));

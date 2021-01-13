@@ -1,5 +1,5 @@
 import * as React from 'react';
-import UserInfoForm from '@/Components/UserInfoForm';
+import UserInfoForm from '@/Components/InfoForm';
 import filterConfig from './filterConfig.index';
 import './index.less';
 import { Button, message } from 'antd';

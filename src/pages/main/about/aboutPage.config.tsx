@@ -1,8 +1,10 @@
 import { FilterConfig, UserInfo } from 'typings';
 import { Major, College } from '@/constant/enum';
-import { Input, Cascader } from 'antd';
+import { Input, Cascader, Tag } from 'antd';
 import React from 'react';
 import { cascaderOptions } from '@/pages/register/filterConfig.index';
+import { ColumnsType } from 'antd/lib/table';
+import { PLACEHOLDER } from '@/constant';
 export interface DescriptionItemProps {
   content: string;
   span?: number;
@@ -120,5 +122,125 @@ export const modifiedFilterConfig: FilterConfig[] = [
     },
     span: 18,
     widget: <Input allowClear />,
+  },
+];
+
+export const tagTableColumn: ColumnsType<any> = [
+  {
+    title: '序号',
+    dataIndex: 'id',
+    key: 'id',
+    render: (item, index) => index + 1,
+  },
+  {
+    title: '名称',
+    dataIndex: 'tName',
+    key: 'tName',
+    render: (item, index) => item,
+  },
+  {
+    title: '简介',
+    dataIndex: 'tagDesc',
+    key: 'tagDesc',
+    render: (item, index) => item,
+  },
+  {
+    title: '现有文章数',
+    dataIndex: 'articleNumber',
+    key: 'articleNumber',
+    render: (item, index) => item,
+  },
+];
+
+export const articleTableColumn: ColumnsType<any> = [
+  {
+    title: '序号',
+    dataIndex: 'id',
+    key: 'id',
+    render: (item, index) => index + 1,
+  },
+  {
+    title: '文章名称',
+    dataIndex: 'articleName',
+    key: 'articleName',
+    render: (item, index) => item,
+  },
+  {
+    title: '发表日期',
+    dataIndex: 'createdAt',
+    key: 'createdAt',
+    render: (item, index) => item,
+  },
+  {
+    title: '标签',
+    dataIndex: 'articleTags',
+    key: 'articleTags',
+    render: (item) => (
+      <React.Fragment>
+        {item.map((ele: string) => (
+          <Tag>{ele}</Tag>
+        ))}
+      </React.Fragment>
+    ),
+  },
+];
+
+export const addTagFormColumn: FilterConfig[] = [
+  {
+    key: 'tName',
+    label: '标签名称',
+    options: {
+      rules: [{ required: true, message: '请输入标签名' }],
+    },
+    widget: <Input allowClear />,
+    span: 20,
+  },
+  {
+    key: 'tagDesc',
+    label: '标签简介',
+    options: {
+      rules: [{ required: true, message: '请输入简介' }],
+    },
+    widget: <Input.TextArea />,
+    span: 20,
+  },
+];
+
+export const addArticleFormColumn: FilterConfig[] = [
+  {
+    key: 'author',
+    label: '作者',
+    options: {
+      rules: [{ required: true, message: '请输入姓名' }],
+    },
+    widget: <Input allowClear />,
+    span: 10,
+  },
+  {
+    key: 'articleTitle',
+    label: '标题',
+    options: {
+      rules: [{ required: true, message: '请输入标题' }],
+    },
+    widget: <Input allowClear />,
+    span: 10,
+  },
+  {
+    key: 'shortDesc',
+    label: '概要',
+    widget: <Input.TextArea />,
+    options: {
+      rules: [{ required: true, message: '请输入概要' }],
+    },
+    span: 22,
+  },
+  {
+    key: 'mainText',
+    label: '内容',
+    widget: <Input.TextArea />,
+    options: {
+      rules: [{ required: true, message: '请输入内容' }],
+    },
+    span: 22,
   },
 ];

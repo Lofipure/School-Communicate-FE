@@ -9,7 +9,12 @@ import {
   Tabs,
   Drawer,
 } from 'antd';
-import { getUserByEmailApi, updateUserInfo } from '@/Api';
+import {
+  getUserByEmailApi,
+  updateUserInfo,
+  createTag,
+  getAllTagDetailInfo,
+} from '@/Api';
 import TableComponent from '@/Components/Table';
 import axios from 'axios';
 
@@ -70,6 +75,25 @@ const AboutPage = () => {
         setUserInfoCardStatus(false);
       });
   };
+
+  const addNewTag = () => {
+    axios({
+      url: createTag.url,
+      method: createTag.method,
+      data: addTagForm.current?.getFieldValues(),
+    })
+      .then((res) => {
+        res.data ? message.success('添加成功') : message.error('标签已存在');
+      })
+      .finally(() => {
+        setAddTagDrawerStatus(false);
+        addTagForm.current?.resetForm();
+      });
+  };
+
+  const addNewArticle = () => {
+    console.log(addArticleForm.current?.getFieldValues());
+  };
   React.useEffect(() => {
     updateShowData();
   }, []);
@@ -99,44 +123,62 @@ const AboutPage = () => {
         onClose={() => {
           setAddArticleDrawerStatus(false);
         }}
+        footerStyle={{
+          textAlign: 'center',
+        }}
         footer={
-          <Button.Group>
-            <Button type="primary">新增</Button>
+          <React.Fragment>
             <Button
+              type="primary"
+              className="add-form-btn"
+              onClick={addNewArticle}
+            >
+              新增
+            </Button>
+            <Button
+              className="add-form-btn"
               onClick={() => {
                 setAddArticleDrawerStatus(false);
               }}
             >
               取消
             </Button>
-          </Button.Group>
+          </React.Fragment>
         }
       >
         <InfoForm
           filters={addArticleFormColumn}
           layout="horizontal"
           ref={addArticleForm}
+          initialValues={{ author: localStorage.getItem('email') }}
         />
       </Drawer>
       <Drawer
         title="新增标签"
+        height={'35vh'}
         visible={addTagDrawerStatus}
         placement="top"
         onClose={() => {
           setAddTagDrawerStatus(false);
         }}
         footer={
-          <Button.Group>
-            <Button type="primary">新增</Button>
+          <React.Fragment>
+            <Button type="primary" className="add-form-btn" onClick={addNewTag}>
+              新增
+            </Button>
             <Button
+              className="add-form-btn"
               onClick={() => {
                 setAddTagDrawerStatus(false);
               }}
             >
               关闭
             </Button>
-          </Button.Group>
+          </React.Fragment>
         }
+        footerStyle={{
+          textAlign: 'center',
+        }}
       >
         <InfoForm
           filters={addTagFormColumn}
@@ -202,7 +244,10 @@ const AboutPage = () => {
       <div className="about-page-item">
         <Tabs>
           <TabPane key={1} tab="所有标签">
-            <TableComponent columns={tagTableColumn} />
+            <TableComponent
+              columns={tagTableColumn}
+              Api={getAllTagDetailInfo}
+            />
             <Button
               className="tabpane-button"
               type="primary"

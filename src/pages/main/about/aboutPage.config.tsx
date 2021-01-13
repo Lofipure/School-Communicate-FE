@@ -1,10 +1,12 @@
 import { FilterConfig, UserInfo } from 'typings';
 import { Major, College } from '@/constant/enum';
-import { Input, Cascader, Tag } from 'antd';
+import { Input, Cascader, Tag, Select } from 'antd';
 import React from 'react';
 import { cascaderOptions } from '@/pages/register/filterConfig.index';
 import { ColumnsType } from 'antd/lib/table';
+import SelectCompoent from '@/Components/Select';
 import { PLACEHOLDER } from '@/constant';
+import { getAllTag } from '@/Api';
 export interface DescriptionItemProps {
   content: string;
   span?: number;
@@ -127,12 +129,6 @@ export const modifiedFilterConfig: FilterConfig[] = [
 
 export const tagTableColumn: ColumnsType<any> = [
   {
-    title: '序号',
-    dataIndex: 'id',
-    key: 'id',
-    render: (item, index) => index + 1,
-  },
-  {
     title: '名称',
     dataIndex: 'tName',
     key: 'tName',
@@ -190,7 +186,11 @@ export const addTagFormColumn: FilterConfig[] = [
     key: 'tName',
     label: '标签名称',
     options: {
-      rules: [{ required: true, message: '请输入标签名' }],
+      rules: [
+        { required: true, message: '请输入标签名' },
+        { min: 1, message: '标签名长度不得小于1' },
+        { max: 10, message: '标签名长度不得大于10' },
+      ],
     },
     widget: <Input allowClear />,
     span: 20,
@@ -211,10 +211,10 @@ export const addArticleFormColumn: FilterConfig[] = [
     key: 'author',
     label: '作者',
     options: {
-      rules: [{ required: true, message: '请输入姓名' }],
+      rules: [{ required: true, message: '请输入作者邮箱' }],
     },
-    widget: <Input allowClear />,
-    span: 10,
+    widget: <Input allowClear disabled />,
+    span: 6,
   },
   {
     key: 'articleTitle',
@@ -223,7 +223,13 @@ export const addArticleFormColumn: FilterConfig[] = [
       rules: [{ required: true, message: '请输入标题' }],
     },
     widget: <Input allowClear />,
-    span: 10,
+    span: 6,
+  },
+  {
+    key: 'tags',
+    label: '标签',
+    widget: <SelectCompoent allowClear Api={getAllTag} mode="multiple" />,
+    span: 6,
   },
   {
     key: 'shortDesc',

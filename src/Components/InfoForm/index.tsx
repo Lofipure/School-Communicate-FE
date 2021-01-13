@@ -12,7 +12,7 @@ export interface UserInfoFormProps {
   className?: string;
   filters: FilterConfig[];
   layout: 'horizontal' | 'inline' | 'vertical';
-  initialValues?: UserInfo;
+  initialValues?: any;
   labelCol?: ColProps;
   wrapperCol?: ColProps;
 }

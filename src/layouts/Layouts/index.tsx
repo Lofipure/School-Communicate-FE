@@ -7,7 +7,7 @@ import MyHeader from '../Components/MyHeader';
 import SideBar from '../Components/SideBar';
 import './index.less';
 
-const { Content, Sider } = Layout;
+const { Content, Sider, Footer } = Layout;
 const LayoutContainer: React.FC<{}> = (props) => {
   return (
     <Provider store={store}>
@@ -31,6 +31,7 @@ const LayoutContainer: React.FC<{}> = (props) => {
             </Content>
           </Layout>
         </Layout>
+        {/* <Footer>Created By WangZiHeng</Footer> */}
       </Layout>
     </Provider>
   );

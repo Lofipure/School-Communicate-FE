@@ -31,6 +31,21 @@ const updateUserInfo: AxiosRequestConfig = {
   method: 'POST',
 };
 
+const createTag: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/createTag`,
+  method: 'POST',
+};
+
+const getAllTag: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/getAllTag`,
+  method: 'GET',
+};
+
+const getAllTagDetailInfo: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/getAllTagDetailInfo`,
+  method: 'GET',
+};
+
 export {
   loginApi,
   reigsterApi,
@@ -38,4 +53,7 @@ export {
   getAllArticleApi,
   getAllArticleByTagApi,
   updateUserInfo,
+  createTag,
+  getAllTag,
+  getAllTagDetailInfo,
 };

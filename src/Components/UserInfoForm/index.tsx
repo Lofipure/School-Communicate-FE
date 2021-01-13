@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Row, Col, Form } from 'antd';
+import { FilterConfig } from 'typings';
 
 interface UserInfoFormHanle {
   getFieldValues: () => object;

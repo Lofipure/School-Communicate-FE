@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './index.less';
-import { Avatar } from 'antd';
+import { Divider } from 'antd';
 import { history } from 'umi';
-
+import { CrownOutlined } from '@ant-design/icons';
 const MyTitle: React.FC<{}> = () => {
   return (
     <span
@@ -18,8 +18,15 @@ const MyTitle: React.FC<{}> = () => {
         }
       }}
     >
-      <Avatar style={{ backgroundColor: '#999' }}>L</Avatar>
-      <span className="header-title-text">校友会</span>
+      <CrownOutlined />
+      <span className="header-title-text">
+        <span>西安科技大学</span>
+        <Divider
+          type="vertical"
+          style={{ color: 'white', backgroundColor: 'white' }}
+        />
+        <span>校友会</span>
+      </span>
     </span>
   );
 };

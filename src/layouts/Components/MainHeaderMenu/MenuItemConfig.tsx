@@ -57,7 +57,7 @@ const mainPageConfig: MenuItemProps[] = [
   {
     key: 'mine',
     title: 'Mine',
-    text: '关于我',
+    text: '我的',
     icon: <UserOutlined />,
     onClick: () => {
       history.push('/main/about');

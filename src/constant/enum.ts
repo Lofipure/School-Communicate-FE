@@ -1,9 +1,11 @@
 export enum CollegeEnums {
+  // 学院的枚举
   'communicateCollege' = 1,
   'computerCollege',
 }
 
 export enum MajorEnums {
+  // 专业的枚举
   'commuicateEngine' = 1,
   'wulianwang',
   'dianxin',

@@ -5,7 +5,6 @@ import React from 'react';
 import { cascaderOptions } from '@/pages/register/filterConfig.index';
 import { ColumnsType } from 'antd/lib/table';
 import SelectCompoent from '@/Components/Select';
-import { PLACEHOLDER } from '@/constant';
 import { getAllTag } from '@/Api';
 export interface DescriptionItemProps {
   content: string;
@@ -150,12 +149,6 @@ export const tagTableColumn: ColumnsType<any> = [
 
 export const articleTableColumn: ColumnsType<any> = [
   {
-    title: '序号',
-    dataIndex: 'id',
-    key: 'id',
-    render: (item, index) => index + 1,
-  },
-  {
     title: '文章名称',
     dataIndex: 'articleName',
     key: 'articleName',
@@ -203,50 +196,5 @@ export const addTagFormColumn: FilterConfig[] = [
     },
     widget: <Input.TextArea />,
     span: 20,
-  },
-];
-
-export const addArticleFormColumn: FilterConfig[] = [
-  {
-    key: 'author',
-    label: '作者',
-    options: {
-      rules: [{ required: true, message: '请输入作者邮箱' }],
-    },
-    widget: <Input allowClear disabled />,
-    span: 6,
-  },
-  {
-    key: 'articleTitle',
-    label: '标题',
-    options: {
-      rules: [{ required: true, message: '请输入标题' }],
-    },
-    widget: <Input allowClear />,
-    span: 6,
-  },
-  {
-    key: 'tags',
-    label: '标签',
-    widget: <SelectCompoent allowClear Api={getAllTag} mode="multiple" />,
-    span: 6,
-  },
-  {
-    key: 'shortDesc',
-    label: '概要',
-    widget: <Input.TextArea />,
-    options: {
-      rules: [{ required: true, message: '请输入概要' }],
-    },
-    span: 22,
-  },
-  {
-    key: 'mainText',
-    label: '内容',
-    widget: <Input.TextArea />,
-    options: {
-      rules: [{ required: true, message: '请输入内容' }],
-    },
-    span: 22,
   },
 ];

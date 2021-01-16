@@ -1,6 +1,6 @@
 import * as ActionType from './actionType';
 
-const loginModalStatusActionCreator = (value: boolean): ActionType => ({
+const loginModalStatusActionCreator = (value: boolean) => ({
   type: ActionType.LOGINMODALSTATUS,
   value,
 });

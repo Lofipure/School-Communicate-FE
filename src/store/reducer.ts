@@ -1,3 +1,4 @@
+import { StateType, ActionType } from 'typings';
 import { LOGINMODALSTATUS } from './actionType';
 const defaultState: StateType = {
   loginModalStatus: false,

@@ -26,14 +26,10 @@ const LayoutContainer: React.FC<{}> = (props) => {
               </Sider>
             )}
           <Layout>
-            <Content className="layout-content">
-              {' '}
-              {/*  style={{ height: 'calc(100vh - 64px)' }} */}
-              {props.children}
-            </Content>
+            <Content className="layout-content"> {props.children}</Content>
           </Layout>
         </Layout>
-        <Footer className="layout-footer">Created By WangZiHeng</Footer>
+        <Footer className="layout-footer">Developmented By WangZiHeng.</Footer>
       </Layout>
     </Provider>
   );

@@ -46,7 +46,12 @@ const getAllTagDetailInfo: AxiosRequestConfig = {
   method: 'GET',
 };
 
+const createArticle: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/createArticle`,
+  method: 'POST',
+};
 export {
+  createArticle,
   loginApi,
   reigsterApi,
   getUserByEmailApi,

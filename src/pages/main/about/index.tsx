@@ -25,13 +25,13 @@ import {
   tagTableColumn,
   articleTableColumn,
   addTagFormColumn,
-  addArticleFormColumn,
 } from './aboutPage.config';
 import InfoForm from '@/Components/InfoForm';
 
 import './index.less';
 import { UserInfo } from 'typings';
 import { PLACEHOLDER } from '@/constant';
+import { history } from 'umi';
 
 const { TabPane } = Tabs;
 const AboutPage = () => {
@@ -47,15 +47,11 @@ const AboutPage = () => {
   );
   const [username, setUserName] = React.useState<string>('');
   const modifiedForm = React.useRef<React.ElementRef<typeof InfoForm>>(null);
-  const [
-    addArticleDrawerStatus,
-    setAddArticleDrawerStatus,
-  ] = React.useState<boolean>(false);
+
   const [addTagDrawerStatus, setAddTagDrawerStatus] = React.useState<boolean>(
     false,
   );
   const addTagForm = React.useRef<React.ElementRef<typeof InfoForm>>(null);
-  const addArticleForm = React.useRef<React.ElementRef<typeof InfoForm>>(null);
   const updateShowData = () => {
     axios({
       url: getUserByEmailApi.url + `?email=${localStorage.getItem('email')}`,
@@ -91,9 +87,6 @@ const AboutPage = () => {
       });
   };
 
-  const addNewArticle = () => {
-    console.log(addArticleForm.current?.getFieldValues());
-  };
   React.useEffect(() => {
     updateShowData();
   }, []);
@@ -115,44 +108,6 @@ const AboutPage = () => {
   };
   return (
     <React.Fragment>
-      <Drawer
-        height={'60vh'}
-        title="新建文章"
-        visible={addArticleDrawerStatus}
-        placement="bottom"
-        onClose={() => {
-          setAddArticleDrawerStatus(false);
-        }}
-        footerStyle={{
-          textAlign: 'center',
-        }}
-        footer={
-          <React.Fragment>
-            <Button
-              type="primary"
-              className="add-form-btn"
-              onClick={addNewArticle}
-            >
-              新增
-            </Button>
-            <Button
-              className="add-form-btn"
-              onClick={() => {
-                setAddArticleDrawerStatus(false);
-              }}
-            >
-              取消
-            </Button>
-          </React.Fragment>
-        }
-      >
-        <InfoForm
-          filters={addArticleFormColumn}
-          layout="horizontal"
-          ref={addArticleForm}
-          initialValues={{ author: localStorage.getItem('email') }}
-        />
-      </Drawer>
       <Drawer
         title="新增标签"
         height={'35vh'}
@@ -212,7 +167,10 @@ const AboutPage = () => {
             className="about-page-info-descriptions-container"
             title={
               <Typography.Text
-                style={{ textAlign: 'center', margin: '0 auto' }}
+                style={{
+                  textAlign: 'center',
+                  margin: '0 auto',
+                }}
               >
                 {username + '的个人信息'}
               </Typography.Text>
@@ -244,10 +202,6 @@ const AboutPage = () => {
       <div className="about-page-item">
         <Tabs>
           <TabPane key={1} tab="所有标签">
-            <TableComponent
-              columns={tagTableColumn}
-              Api={getAllTagDetailInfo}
-            />
             <Button
               className="tabpane-button"
               type="primary"
@@ -257,18 +211,26 @@ const AboutPage = () => {
             >
               新增标签
             </Button>
+            <TableComponent
+              rowKey={'tName'}
+              columns={tagTableColumn}
+              Api={getAllTagDetailInfo}
+            />
           </TabPane>
           <TabPane key={2} tab="我的文章">
-            <TableComponent columns={articleTableColumn} />
             <Button
               className="tabpane-button"
               type="primary"
               onClick={() => {
-                setAddArticleDrawerStatus(true);
+                history.push('/article/add');
               }}
             >
               新建文章
             </Button>
+            <TableComponent
+              columns={articleTableColumn}
+              rowKey={'articleName'}
+            />
           </TabPane>
         </Tabs>
       </div>

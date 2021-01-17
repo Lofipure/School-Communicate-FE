@@ -50,7 +50,19 @@ const createArticle: AxiosRequestConfig = {
   url: `${ROOT_PATH}/createArticle`,
   method: 'POST',
 };
+
+const getUserArticle: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/getUserArticle`,
+  method: 'GET',
+};
+
+const getAllArticle: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/getAllArticle`,
+  method: 'GET',
+};
+
 export {
+  getAllArticle,
   createArticle,
   loginApi,
   reigsterApi,
@@ -61,4 +73,5 @@ export {
   createTag,
   getAllTag,
   getAllTagDetailInfo,
+  getUserArticle,
 };

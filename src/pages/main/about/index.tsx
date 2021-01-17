@@ -14,6 +14,7 @@ import {
   updateUserInfo,
   createTag,
   getAllTagDetailInfo,
+  getUserArticle,
 } from '@/Api';
 import TableComponent from '@/Components/Table';
 import axios from 'axios';
@@ -229,7 +230,8 @@ const AboutPage = () => {
             </Button>
             <TableComponent
               columns={articleTableColumn}
-              rowKey={'articleName'}
+              rowKey={'articleTitle'}
+              Api={getUserArticle}
             />
           </TabPane>
         </Tabs>

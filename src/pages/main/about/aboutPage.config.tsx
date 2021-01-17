@@ -1,11 +1,10 @@
 import { FilterConfig, UserInfo } from 'typings';
 import { Major, College } from '@/constant/enum';
-import { Input, Cascader, Tag, Select } from 'antd';
+import { Input, Cascader, Tag } from 'antd';
 import React from 'react';
 import { cascaderOptions } from '@/pages/register/filterConfig.index';
 import { ColumnsType } from 'antd/lib/table';
-import SelectCompoent from '@/Components/Select';
-import { getAllTag } from '@/Api';
+
 export interface DescriptionItemProps {
   content: string;
   span?: number;
@@ -150,15 +149,16 @@ export const tagTableColumn: ColumnsType<any> = [
 export const articleTableColumn: ColumnsType<any> = [
   {
     title: '文章名称',
-    dataIndex: 'articleName',
-    key: 'articleName',
+    dataIndex: 'articleTitle',
+    key: 'articleTitle',
     render: (item, index) => item,
   },
   {
     title: '发表日期',
     dataIndex: 'createdAt',
     key: 'createdAt',
-    render: (item, index) => item,
+    render: (item, index) =>
+      new Date(item).toLocaleDateString().replace(/\//g, '-'),
   },
   {
     title: '标签',
@@ -166,8 +166,8 @@ export const articleTableColumn: ColumnsType<any> = [
     key: 'articleTags',
     render: (item) => (
       <React.Fragment>
-        {item.map((ele: string) => (
-          <Tag>{ele}</Tag>
+        {item.map((ele: string, index: number) => (
+          <Tag key={index}>{ele}</Tag>
         ))}
       </React.Fragment>
     ),

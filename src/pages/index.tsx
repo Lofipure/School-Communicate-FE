@@ -28,6 +28,10 @@ const IndexPage = () => {
       } else if (res.data == 1) {
         message.success('登录成功');
         localStorage.setItem('userInfo', JSON.stringify(storageData));
+        localStorage.setItem(
+          'email',
+          loginForm.current?.getFieldValues()?.email,
+        );
         history.push('/main');
       } else {
         message.error('密码错误');

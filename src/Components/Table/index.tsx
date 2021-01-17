@@ -16,7 +16,7 @@ const TableComponent: React.FC<TableProps> = (props: TableProps) => {
   React.useEffect(() => {
     axios({
       method: props.Api?.method,
-      url: props.Api?.url,
+      url: props.Api?.url + `?email=${localStorage.getItem('email')}`,
     })
       .then((res) => {
         setData(res.data);

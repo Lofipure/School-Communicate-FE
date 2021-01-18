@@ -167,7 +167,9 @@ export const articleTableColumn: ColumnsType<any> = [
     render: (item) => (
       <React.Fragment>
         {item.map((ele: string, index: number) => (
-          <Tag key={index}>{ele}</Tag>
+          <Tag key={index} color={'processing'}>
+            {ele}
+          </Tag>
         ))}
       </React.Fragment>
     ),

@@ -61,7 +61,13 @@ const getAllArticle: AxiosRequestConfig = {
   method: 'GET',
 };
 
+const getArticleById: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/getArticleById`,
+  method: 'GET',
+};
+
 export {
+  getArticleById,
   getAllArticle,
   createArticle,
   loginApi,

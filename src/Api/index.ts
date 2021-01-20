@@ -66,7 +66,12 @@ const getArticleById: AxiosRequestConfig = {
   method: 'GET',
 };
 
+const getCommentsByArticleId: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/getCommentsByArticleId`,
+  method: 'GET',
+};
 export {
+  getCommentsByArticleId,
   getArticleById,
   getAllArticle,
   createArticle,

@@ -6,7 +6,7 @@ import {
   UserOutlined,
   TagsOutlined,
   PushpinOutlined,
-  PhoneOutlined,
+  CalendarOutlined,
 } from '@ant-design/icons';
 import { history } from 'umi';
 export interface UserInfoProps {
@@ -61,12 +61,12 @@ const ArticleCard = (props: ArticleCardProps) => {
                 {item.authorInfo.email}
               </span>,
               <span className="article-card-item-author">
-                <PhoneOutlined className="article-card-item-author-icon" />
-                {item.authorInfo.telephone}
-              </span>,
-              <span className="article-card-item-author">
                 <PushpinOutlined className="article-card-item-author-icon" />
                 {item.authorInfo.location}
+              </span>,
+              <span className="article-card-item-author">
+                <CalendarOutlined className="article-card-item-author-icon" />
+                {new Date(item.createdAt).toLocaleDateString()}
               </span>,
             ]}
             extra={

@@ -6,8 +6,8 @@ import { history } from 'umi';
 import MyHeader from '../Components/MyHeader';
 import SideBar from '../Components/SideBar';
 import './index.less';
-
 const { Content, Sider, Footer } = Layout;
+
 const LayoutContainer: React.FC<{}> = (props) => {
   return (
     <Provider store={store}>

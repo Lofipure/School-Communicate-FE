@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { history } from 'umi';
-import { getArticleById } from '@/Api';
+import { getArticleById, getCommentsByArticleId } from '@/Api';
 import axios from 'axios';
-import ArticleShow, { ArticleShowPorps } from './components/ArticleShow';
+import ArticleShow, { ArticleShowPorps } from '@/Components/ArticleShow';
+import Comments from '@/Components/Comments';
+
 import { Row, Col, Spin } from 'antd';
 import './index.less';
 
@@ -28,6 +30,11 @@ const ArticleMainPage = () => {
         <Row justify="center" align="middle" className="article-main-page-text">
           <Col span={23}>
             <ArticleShow {...articleInfo} />
+          </Col>
+        </Row>
+        <Row justify="center" align="middle">
+          <Col span={23}>
+            <Comments api={getCommentsByArticleId} articleId={id || ''} />
           </Col>
         </Row>
       </div>

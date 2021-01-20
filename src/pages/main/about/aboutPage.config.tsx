@@ -4,6 +4,7 @@ import { Input, Cascader, Tag } from 'antd';
 import React from 'react';
 import { cascaderOptions } from '@/pages/register/filterConfig.index';
 import { ColumnsType } from 'antd/lib/table';
+import { TagsOutlined } from '@ant-design/icons';
 
 export interface DescriptionItemProps {
   content: string;
@@ -157,8 +158,7 @@ export const articleTableColumn: ColumnsType<any> = [
     title: '发表日期',
     dataIndex: 'createdAt',
     key: 'createdAt',
-    render: (item, index) =>
-      new Date(item).toLocaleDateString().replace(/\//g, '-'),
+    render: (item, index) => new Date(item).toLocaleDateString(),
   },
   {
     title: '标签',
@@ -167,7 +167,7 @@ export const articleTableColumn: ColumnsType<any> = [
     render: (item) => (
       <React.Fragment>
         {item.map((ele: string, index: number) => (
-          <Tag key={index} color={'processing'}>
+          <Tag key={index} color={'processing'} icon={<TagsOutlined />}>
             {ele}
           </Tag>
         ))}

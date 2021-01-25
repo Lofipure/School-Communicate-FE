@@ -5,7 +5,8 @@ import React from 'react';
 import { cascaderOptions } from '@/pages/register/filterConfig.index';
 import { ColumnsType } from 'antd/lib/table';
 import { TagsOutlined } from '@ant-design/icons';
-
+import ArticleOpeaGroup from '@/Components/ArticleOpeaGroup';
+import TagOpeaGroup from '@/Components/TagOpeaGroup';
 export interface DescriptionItemProps {
   content: string;
   span?: number;
@@ -145,6 +146,11 @@ export const tagTableColumn: ColumnsType<any> = [
     key: 'articleNumber',
     render: (item, index) => item,
   },
+  {
+    title: '操作',
+    key: 'opea',
+    render: (item) => <TagOpeaGroup {...item} />,
+  },
 ];
 
 export const articleTableColumn: ColumnsType<any> = [
@@ -173,6 +179,11 @@ export const articleTableColumn: ColumnsType<any> = [
         ))}
       </React.Fragment>
     ),
+  },
+  {
+    title: '操作',
+    key: 'opea',
+    render: (item) => <ArticleOpeaGroup {...item} />,
   },
 ];
 

@@ -4,6 +4,7 @@ import { getArticleById, getCommentsByArticleId } from '@/Api';
 import axios from 'axios';
 import ArticleShow, { ArticleShowPorps } from '@/Components/ArticleShow';
 import Comments from '@/Components/Comments';
+import CommentInput from '@/Components/CommentInput';
 
 import { Row, Col, Spin } from 'antd';
 import './index.less';
@@ -32,11 +33,14 @@ const ArticleMainPage = () => {
             <ArticleShow {...articleInfo} />
           </Col>
         </Row>
+        {/* <Row justify="center" align="middle">
+          <CommentInput />
+        </Row>
         <Row justify="center" align="middle">
           <Col span={23}>
             <Comments api={getCommentsByArticleId} articleId={id || ''} />
           </Col>
-        </Row>
+        </Row> */}
       </div>
     </Spin>
   );

@@ -70,7 +70,19 @@ const getCommentsByArticleId: AxiosRequestConfig = {
   url: `${ROOT_PATH}/getCommentsByArticleId`,
   method: 'GET',
 };
+
+const removeArticle: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/removeArticle`,
+  method: 'GET',
+};
+
+const removeTag: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/removeTag`,
+  method: 'GET',
+};
 export {
+  removeTag,
+  removeArticle,
   getCommentsByArticleId,
   getArticleById,
   getAllArticle,

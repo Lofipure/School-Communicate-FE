@@ -30,6 +30,7 @@ const IndexPage = () => {
         localStorage.setItem('userInfo', JSON.stringify(storageData));
         localStorage.setItem(
           'email',
+          // @ts-ignore
           loginForm.current?.getFieldValues()?.email,
         );
         history.push('/main');

@@ -29,7 +29,9 @@ const LayoutContainer: React.FC<{}> = (props) => {
             <Content className="layout-content"> {props.children}</Content>
           </Layout>
         </Layout>
-        <Footer className="layout-footer">Developmented By WangZiHeng.</Footer>
+        <Footer className="layout-footer">
+          XUST School Mate Group © 2021 王子恒
+        </Footer>
       </Layout>
     </Provider>
   );

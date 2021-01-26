@@ -29,12 +29,16 @@
     "axios": "^0.21.1",
     "highlight.js": "^10.5.0",
     "marked": "^1.2.7",
+    "node-sass": "^5.0.0",
     "react-redux": "^7.2.2",
-    "umi": "^3.3.3"
+    "sass-loader": "^10.1.1",
+    "umi": "^3.3.3",
+    "vditor": "^3.7.7"
   },
   "devDependencies": {
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "@umijs/plugin-sass": "^1.1.1",
     "@umijs/test": "^3.3.3",
     "lint-staged": "^10.0.7",
     "prettier": "^2.2.0",

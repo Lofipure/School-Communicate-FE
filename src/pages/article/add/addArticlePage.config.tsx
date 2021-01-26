@@ -3,6 +3,8 @@ import { Input } from 'antd';
 import React from 'react';
 import { FilterConfig } from 'typings';
 import SelectCompoent from '@/Components/Select';
+import Vditor from '@/Components/VditorContainer';
+import 'vditor/src/assets/scss/index.scss';
 
 export const addArticleFormColumn: FilterConfig[] = [
   {
@@ -34,20 +36,20 @@ export const addArticleFormColumn: FilterConfig[] = [
   },
   {
     key: 'shortDesc',
-    label: '概要',
-    widget: <Input.TextArea />,
+    label: '简介',
+    widget: <Input allowClear />,
     options: {
-      rules: [{ required: true, message: '请输入概要' }],
+      rules: [{ required: true, message: '请输入简介' }],
     },
     span: 22,
   },
   {
     key: 'mainText',
     label: '内容',
-    widget: <Input.TextArea />,
-    options: {
-      rules: [{ required: true, message: '请输入内容' }],
-    },
+    widget: <Vditor />,
     span: 22,
+    options: {
+      rules: [{ required: true }],
+    },
   },
 ];

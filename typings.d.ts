@@ -3,12 +3,14 @@ import { Method } from 'axios';
 declare module '*.css';
 declare module '*.less';
 declare module '*.png';
+declare module '*.sass';
+declare module '*.scss';
 declare module '*.svg' {
   export function ReactComponent(
     props: React.SVGProps<SVGSVGElement>,
   ): React.ReactElement;
   const url: string;
-  export default url;
+  // export default url;
 }
 
 interface FilterConfig {

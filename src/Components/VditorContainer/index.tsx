@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Vditor from 'vditor';
 import 'vditor/src/assets/scss/index.scss';
+import { Spin } from 'antd';
 
 interface VditorContainerProps {
   value?: string;
@@ -10,6 +11,7 @@ interface VditorContainerProps {
 
 const VditorContainer = (props: VditorContainerProps) => {
   const { onChange, value } = props;
+  const [loading, setLoading] = React.useState<boolean>(false);
   const divRef = React.useRef<HTMLDivElement>(null);
   const toolbarconfig = [
     'outline',
@@ -28,30 +30,37 @@ const VditorContainer = (props: VditorContainerProps) => {
     'fullscreen',
     'ordered-list',
   ];
-  const handleOnChange = (value: string, option: any) => {
+  const handleOnChange = (value: string, option?: any) => {
     onChange?.(value, option);
   };
   React.useEffect(() => {
     if (props.mode === 'edit') {
       new Vditor('vditor', {
         minHeight: 300,
-        cache: {
-          enable: false,
-        },
         comment: {
           enable: false,
         },
         mode: 'ir',
         toolbar: toolbarconfig,
-        input: handleOnChange,
+        blur: handleOnChange,
         value: value,
+        cache: {
+          enable: false,
+        },
       });
     } else {
+      setLoading(true);
       // @ts-ignore
-      Vditor.preview(divRef.current, value);
+      Vditor.preview(divRef.current, value, {}).then(() => {
+        setLoading(false);
+      });
     }
   }, [props.value]);
-  return <div id="vditor" ref={divRef}></div>;
+  return (
+    <Spin spinning={loading}>
+      <div id="vditor" ref={divRef}></div>
+    </Spin>
+  );
 };
 
 export default VditorContainer;

@@ -207,7 +207,7 @@ export const addTagFormColumn: FilterConfig[] = [
     options: {
       rules: [{ required: true, message: '请输入简介' }],
     },
-    widget: <Input.TextArea />,
+    widget: <Input allowClear />,
     span: 20,
   },
 ];

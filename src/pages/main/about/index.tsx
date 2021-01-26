@@ -111,7 +111,7 @@ const AboutPage = () => {
     <React.Fragment>
       <Drawer
         title="新增标签"
-        height={'35vh'}
+        height={'30vh'}
         visible={addTagDrawerStatus}
         placement="top"
         onClose={() => {

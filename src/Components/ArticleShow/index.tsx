@@ -49,7 +49,9 @@ const ArticleShow = (props: ArticleShowPorps) => {
             <div className={styles['container']}></div>
           </div>
         )}
-        <Vditor value={props.mainText} />
+        <div className={styles['content']}>
+          <Vditor value={props.mainText} mode="render" />
+        </div>
       </Typography>
       {!preview && (
         <Row justify="end" align="middle">

@@ -29,7 +29,9 @@ const TagOpeaGroup = (props: TagOpeaGroup) => {
       cancelText="我再想想"
       onConfirm={handleClick}
     >
-      <Button icon={<DeleteOutlined />}>删除</Button>
+      <Button icon={<DeleteOutlined />} type="primary">
+        删除
+      </Button>
     </Popconfirm>
   );
 };

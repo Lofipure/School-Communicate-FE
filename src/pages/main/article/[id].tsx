@@ -33,14 +33,6 @@ const ArticleMainPage = () => {
             <ArticleShow {...articleInfo} />
           </Col>
         </Row>
-        {/* <Row justify="center" align="middle">
-          <CommentInput />
-        </Row>
-        <Row justify="center" align="middle">
-          <Col span={23}>
-            <Comments api={getCommentsByArticleId} articleId={id || ''} />
-          </Col>
-        </Row> */}
       </div>
     </Spin>
   );

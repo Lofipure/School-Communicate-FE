@@ -24,12 +24,7 @@ const TagOpeaGroup = (props: TagOpeaGroup) => {
   return (
     <Popconfirm
       placement="topLeft"
-      title={
-        <div>
-          <Row justify="center">确定要删除吗</Row>
-          <Row justify="center">这个操作将导致该标签的所有文章被删除</Row>
-        </div>
-      }
+      title="确定要删除吗，这个操作将导致该标签所有文章被删除"
       okText="确定"
       cancelText="我再想想"
       onConfirm={handleClick}

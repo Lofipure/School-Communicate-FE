@@ -1,8 +1,5 @@
 import * as React from 'react';
-import marked from 'marked';
-import hljs from 'highlight.js';
 import { Typography, Row, Col, Tag } from 'antd';
-import { PLACEHOLDER } from '@/constant';
 import {
   UserOutlined,
   CalendarOutlined,
@@ -10,9 +7,9 @@ import {
 } from '@ant-design/icons';
 //@ts-ignore
 import styles from './index.less';
-import 'highlight.js/styles/googlecode.css';
+import Vditor from '@/Components/VditorContainer';
 
-const { Title, Paragraph } = Typography;
+const { Title } = Typography;
 interface authorInfoProps {
   name: string;
   major: string;
@@ -31,18 +28,8 @@ export interface ArticleShowPorps {
 }
 
 const ArticleShow = (props: ArticleShowPorps) => {
-  const render = new marked.Renderer();
   const { preview = false } = props;
-  marked.setOptions({
-    renderer: render,
-    gfm: true,
-    pedantic: false,
-    sanitize: false,
-    breaks: false,
-    smartLists: true,
-    smartypants: false,
-    highlight: (code) => hljs.highlightAuto(code).value,
-  });
+
   return (
     <div className={styles['container']}>
       <Typography>
@@ -62,14 +49,7 @@ const ArticleShow = (props: ArticleShowPorps) => {
             <div className={styles['container']}></div>
           </div>
         )}
-        <Paragraph>
-          <span
-            className={styles['content']}
-            dangerouslySetInnerHTML={{
-              __html: marked(props.mainText || PLACEHOLDER),
-            }}
-          ></span>
-        </Paragraph>
+        <Vditor value={props.mainText} toolbarStatus={true} />
       </Typography>
       {!preview && (
         <Row justify="end" align="middle">
@@ -85,3 +65,22 @@ const ArticleShow = (props: ArticleShowPorps) => {
 };
 
 export default ArticleShow;
+
+// import * as React from 'react';
+// import Vditor from '@/Components/VditorContainer';
+// // @ts-ignore
+// import styles from './index.less';
+
+// const ArticleShow = (props: ArticleShowPorps) => {
+//   const { preview = false } = props;
+//   React.useEffect(() => {
+//     console.log(props);
+//   }, []);
+//   return (
+//     <div className={styles['container']}>
+//       {!preview && <Vditor value={props.mainText} />}
+//     </div>
+//   );
+// };
+
+// export default ArticleShow;

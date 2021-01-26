@@ -3,9 +3,33 @@ import Vditor from 'vditor';
 import 'vditor/src/assets/scss/index.scss';
 
 const ele = React.createElement;
+interface VditorContainerProps {
+  value?: string;
+  onChange?: (value: string, option: any) => void;
+  toolbarStatus?: boolean;
+}
 
-const VditorContainer = (props: any) => {
-  const { onChange } = props;
+const VditorContainer = (props: VditorContainerProps) => {
+  const { onChange, value = '', toolbarStatus = false } = props;
+  const toolbarconfig = toolbarStatus
+    ? []
+    : [
+        'outline',
+        '|',
+        'emoji',
+        'headings',
+        'bold',
+        'strike',
+        '|',
+        'code',
+        'link',
+        'undo',
+        'redo',
+        'indent',
+        'outdent',
+        'fullscreen',
+        'ordered-list',
+      ];
   const handleOnChange = (value: string, option: any) => {
     onChange?.(value, option);
   };
@@ -22,26 +46,11 @@ const VditorContainer = (props: any) => {
         enable: false,
       },
       mode: 'ir',
-      toolbar: [
-        'outline',
-        '|',
-        'emoji',
-        'headings',
-        'bold',
-        'strike',
-        '|',
-        'code',
-        'link',
-        'undo',
-        'redo',
-        'indent',
-        'outdent',
-        'fullscreen',
-        'ordered-list',
-      ],
+      toolbar: toolbarconfig,
       input: handleOnChange,
+      value: value,
     });
-  }, []);
+  }, [props.value]);
   return ele('div', { id: 'vditor' });
 };
 

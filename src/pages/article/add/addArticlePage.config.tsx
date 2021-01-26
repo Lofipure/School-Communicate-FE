@@ -46,7 +46,7 @@ export const addArticleFormColumn: FilterConfig[] = [
   {
     key: 'mainText',
     label: '内容',
-    widget: <Vditor />,
+    widget: <Vditor mode="edit" />,
     span: 22,
     options: {
       rules: [{ required: true }],

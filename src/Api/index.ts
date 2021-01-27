@@ -66,11 +66,6 @@ const getArticleById: AxiosRequestConfig = {
   method: 'GET',
 };
 
-const getCommentsByArticleId: AxiosRequestConfig = {
-  url: `${ROOT_PATH}/getCommentsByArticleId`,
-  method: 'GET',
-};
-
 const removeArticle: AxiosRequestConfig = {
   url: `${ROOT_PATH}/removeArticle`,
   method: 'GET',
@@ -96,7 +91,18 @@ const articleGetBad: AxiosRequestConfig = {
   method: 'GET',
 };
 
+const getCommentsByArticleId: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/getCommentsByArticleId`,
+  method: 'GET',
+};
+
+const commentGetGood: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/commentGetGood`,
+  method: 'GET',
+};
+
 export {
+  commentGetGood,
   articleGetGood,
   articleGetBad,
   pushComment,

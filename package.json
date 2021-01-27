@@ -27,6 +27,7 @@
     "@umijs/preset-react": "1.x",
     "antd": "^4.9.4",
     "axios": "^0.21.1",
+    "moment": "^2.29.1",
     "node-sass": "^5.0.0",
     "react-redux": "^7.2.2",
     "sass-loader": "^10.1.1",

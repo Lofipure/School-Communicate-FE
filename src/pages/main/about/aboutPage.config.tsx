@@ -7,6 +7,8 @@ import { ColumnsType } from 'antd/lib/table';
 import { TagsOutlined } from '@ant-design/icons';
 import ArticleOpeaGroup from '@/Components/ArticleOpeaGroup';
 import TagOpeaGroup from '@/Components/TagOpeaGroup';
+import { getItem, proviceMap, cityMap, contryMap } from '@/constant/city';
+const locationOptions = getItem();
 export interface DescriptionItemProps {
   content: string;
   span?: number;
@@ -42,7 +44,9 @@ export const getUserInfo = (
   },
 
   {
-    content: userInfoObject.location,
+    content: `${proviceMap[userInfoObject.location[0]]}/${
+      cityMap[userInfoObject.location[1]]
+    }/${contryMap[userInfoObject.location[2]]}`,
     label: '当前所在地',
   },
   {
@@ -123,7 +127,7 @@ export const modifiedFilterConfig: FilterConfig[] = [
       rules: [{ required: true, message: '请输入当前所在地' }],
     },
     span: 18,
-    widget: <Input allowClear />,
+    widget: <Cascader options={locationOptions} placeholder="" allowClear />,
   },
 ];
 

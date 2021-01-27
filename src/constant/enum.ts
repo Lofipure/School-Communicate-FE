@@ -204,7 +204,7 @@ export const Major: Record<number, string> = {
   [MajorEnums.hanyuyanwenxueguoji]: '汉语言文学国际',
   [MajorEnums.yingyu]: '英语',
   [MajorEnums.zhengzhixueyuxingzhengxue]: '政治学与行政学',
-  [MajorEnums.tongxingongcheng]: 'communicateEngine',
+  [MajorEnums.tongxingongcheng]: '通信工程',
   [MajorEnums.wulianwanggongcheng]: '物联网工程',
   [MajorEnums.dianzixinxigongcheng]: '电子信息工程',
   [MajorEnums.dianzikexueyujishu]: '电子科学与技术',

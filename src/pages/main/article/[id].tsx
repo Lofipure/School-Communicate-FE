@@ -1,11 +1,6 @@
 import * as React from 'react';
 import { history } from 'umi';
-import {
-  getArticleById,
-  getCommentsByArticleId,
-  articleGetGood,
-  articleGetBad,
-} from '@/Api';
+import { getArticleById, articleGetGood, articleGetBad } from '@/Api';
 import axios, { AxiosRequestConfig } from 'axios';
 import ArticleShow, { ArticleShowPorps } from '@/Components/ArticleShow';
 import CommentsList from './components/CommentsList';
@@ -18,7 +13,7 @@ const ArticleMainPage = () => {
   const id = history.location.pathname.split('/').pop();
   const [articleInfo, setArticleInfo] = React.useState<ArticleShowPorps>();
   const [loading, setLoading] = React.useState<boolean>(true);
-  React.useEffect(() => {
+  const fetchData = () => {
     axios({
       method: getArticleById.method,
       url: getArticleById.url + `?aId=${id}`,
@@ -29,6 +24,9 @@ const ArticleMainPage = () => {
       .finally(() => {
         setLoading(false);
       });
+  };
+  React.useEffect(() => {
+    fetchData();
   }, []);
 
   const addReaderAction = (type: 'good' | 'bad') => {
@@ -38,23 +36,27 @@ const ArticleMainPage = () => {
     axios({
       url: targetApi.url + `?aId=${id}`,
       method: targetApi.method,
-    }).then((res) => {
-      if (res.data) {
-        if (type == 'good') {
-          setArticleInfo({
-            ...articleInfo,
-            // @ts-ignore
-            getGoodNumber: articleInfo.getGoodNumber + 1,
-          });
-        } else {
-          setArticleInfo({
-            ...articleInfo,
-            // @ts-ignore
-            getBadNumber: articleInfo.getBadNumber + 1,
-          });
+    })
+      .then((res) => {
+        if (res.data) {
+          if (type == 'good') {
+            setArticleInfo({
+              ...articleInfo,
+              // @ts-ignore
+              getGoodNumber: articleInfo.getGoodNumber + 1,
+            });
+          } else {
+            setArticleInfo({
+              ...articleInfo,
+              // @ts-ignore
+              getBadNumber: articleInfo.getBadNumber + 1,
+            });
+          }
         }
-      }
-    });
+      })
+      .finally(() => {
+        fetchData();
+      });
   };
   return (
     <Spin spinning={loading}>
@@ -98,11 +100,20 @@ const ArticleMainPage = () => {
           </Col>
         </Row>
       </div>
-      {/* <div className="article-main-page">
+      <div className="article-main-page">
         <Row justify="center" align="middle" className="article-main-page-text">
-          
+          <Col span={24}>
+            <Divider>
+              <span className="article-main-page-divider">
+                来看看大家的评论。
+              </span>
+            </Divider>
+          </Col>
+          <Col span={22}>
+            <CommentsList aId={id} uId={articleInfo?.authorInfo?.uId} />
+          </Col>
         </Row>
-      </div> */}
+      </div>
     </Spin>
   );
 };

@@ -64,6 +64,7 @@ const AboutPage = () => {
           userInfoTemp.college.toString(),
           userInfoTemp.major.toString(),
         ];
+        userInfoTemp.location = JSON.parse(userInfoTemp.location);
         setUserInfo(userInfoTemp);
         setRenderItem(getUserInfo(res.data[0]));
         setUserName(res.data[0].name);

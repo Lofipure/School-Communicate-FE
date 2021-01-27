@@ -6,11 +6,11 @@ import { Button, message } from 'antd';
 import axios from 'axios';
 import { reigsterApi } from '@/Api';
 import { history } from 'umi';
+
 const Register = () => {
   const registerUserForm = React.useRef<React.ElementRef<typeof UserInfoForm>>(
     null,
   );
-
   const handleSubmit = () => {
     console.log(registerUserForm.current?.getFieldValues());
     axios({

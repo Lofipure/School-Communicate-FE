@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Input, Cascader } from 'antd';
 import { FilterConfig } from 'typings';
+import { getItem } from '@/constant/city';
 
+const locationOption = getItem();
 interface CascaderOptionsProps {
   label: string;
   value: string;
@@ -531,10 +533,10 @@ const filterConfig: FilterConfig[] = [
     key: 'location',
     label: '当前所在地',
     options: {
-      rules: [{ required: true, message: '请输入当前所在地' }],
+      rules: [{ required: true, message: '请选择当前所在地' }],
     },
     span: 10,
-    widget: <Input allowClear />,
+    widget: <Cascader allowClear options={locationOption} placeholder="" />,
   },
   {
     key: 'password',

@@ -36,6 +36,7 @@ const UserInfoForm = React.forwardRef<UserInfoFormHanle, UserInfoFormProps>(
     React.useImperativeHandle(ref, () => ({
       getFieldValues: () => {
         let retData = userInfoForm.getFieldsValue();
+        retData.location = JSON.stringify(retData.location);
         return retData;
       },
       resetForm: () => {

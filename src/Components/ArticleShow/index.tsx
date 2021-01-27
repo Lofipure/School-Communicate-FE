@@ -11,6 +11,7 @@ import Vditor from '@/Components/VditorContainer';
 
 const { Title } = Typography;
 export interface authorInfoProps {
+  uId?: string;
   name?: string;
   major?: string;
   college?: string;

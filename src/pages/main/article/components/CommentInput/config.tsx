@@ -33,7 +33,7 @@ export const SelectStatusComponent = (props: any) => {
     onChange?.(value, option);
   };
   return (
-    <Select placeholder="说说你的看法" onChange={handleOnChange}>
+    <Select placeholder="表示一下俺的看法" onChange={handleOnChange}>
       {commentStatusFilter.map((item: commentStatusProps, index: number) => (
         <Select.Option key={index} value={item.value}>
           {item.icon}

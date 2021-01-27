@@ -44,6 +44,6 @@ interface UserInfo {
   college: number;
   major: number;
   grade: number;
-  location: string;
+  location: string[];
   studentID: string;
 }

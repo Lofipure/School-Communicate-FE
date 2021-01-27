@@ -68,7 +68,7 @@ const CommentInput = (props: CommentInputProps) => {
         }
       />
       <Row justify="end" align="middle">
-        <Col span={2}>
+        <Col span={3}>
           <span className={styles['tip']}>
             <Tag
               icon={<CoffeeOutlined />}
@@ -82,7 +82,7 @@ const CommentInput = (props: CommentInputProps) => {
         </Col>
         <span className={styles['commenter']}>
           <UserOutlined className={styles['comment-icon']} />
-          {localStorage.getItem('email')}
+          {`${localStorage.getItem('email')}`}
         </span>
         <Col span={2}>
           <span className={styles['tip']}>
@@ -92,7 +92,7 @@ const CommentInput = (props: CommentInputProps) => {
               onClick={handlePush}
               loading={pushStatus}
             >
-              评价
+              发布评论
             </Button>
           </span>
         </Col>

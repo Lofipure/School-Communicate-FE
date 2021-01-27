@@ -80,7 +80,26 @@ const removeTag: AxiosRequestConfig = {
   url: `${ROOT_PATH}/removeTag`,
   method: 'GET',
 };
+
+const pushComment: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/pushComment`,
+  method: 'POST',
+};
+
+const articleGetGood: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/articleGetGood`,
+  method: 'GET',
+};
+
+const articleGetBad: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/articleGetBad`,
+  method: 'GET',
+};
+
 export {
+  articleGetGood,
+  articleGetBad,
+  pushComment,
   removeTag,
   removeArticle,
   getCommentsByArticleId,

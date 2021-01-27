@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Typography, Row, Col, Tag } from 'antd';
+import { Typography, Row, Tag } from 'antd';
 import {
   UserOutlined,
   CalendarOutlined,
@@ -10,13 +10,13 @@ import styles from './index.less';
 import Vditor from '@/Components/VditorContainer';
 
 const { Title } = Typography;
-interface authorInfoProps {
-  name: string;
-  major: string;
-  college: string;
-  email: string;
-  telephone: string;
-  location: string;
+export interface authorInfoProps {
+  name?: string;
+  major?: string;
+  college?: string;
+  email?: string;
+  telephone?: string;
+  location?: string;
 }
 export interface ArticleShowPorps {
   articleTitle?: string;
@@ -25,6 +25,8 @@ export interface ArticleShowPorps {
   tags?: Array<string>;
   mainText?: string;
   preview?: boolean;
+  getGoodNumber?: number;
+  getBadNumber?: number;
 }
 
 const ArticleShow = (props: ArticleShowPorps) => {
@@ -54,35 +56,23 @@ const ArticleShow = (props: ArticleShowPorps) => {
         </div>
       </Typography>
       {!preview && (
-        <Row justify="end" align="middle">
-          {props.tags?.map((item, index) => (
-            <Tag key={index} color="processing" icon={<TagsOutlined />}>
-              {item}
-            </Tag>
-          ))}
-        </Row>
+        <div className={styles['container']}>
+          <Row justify="end" align="middle">
+            {props.tags?.map((item, index) => (
+              <Tag
+                key={index}
+                color="processing"
+                icon={<TagsOutlined />}
+                className={styles['tag']}
+              >
+                {item}
+              </Tag>
+            ))}
+          </Row>
+        </div>
       )}
     </div>
   );
 };
 
 export default ArticleShow;
-
-// import * as React from 'react';
-// import Vditor from '@/Components/VditorContainer';
-// // @ts-ignore
-// import styles from './index.less';
-
-// const ArticleShow = (props: ArticleShowPorps) => {
-//   const { preview = false } = props;
-//   React.useEffect(() => {
-//     console.log(props);
-//   }, []);
-//   return (
-//     <div className={styles['container']}>
-//       {!preview && <Vditor value={props.mainText} />}
-//     </div>
-//   );
-// };
-
-// export default ArticleShow;

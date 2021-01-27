@@ -2,7 +2,6 @@ import * as React from 'react';
 import Vditor from 'vditor';
 import 'vditor/src/assets/scss/index.scss';
 import { Spin } from 'antd';
-
 interface VditorContainerProps {
   value?: string;
   onChange?: (value: string, option: any) => void;
@@ -11,7 +10,7 @@ interface VditorContainerProps {
 
 const VditorContainer = (props: VditorContainerProps) => {
   const { onChange, value } = props;
-  const [loading, setLoading] = React.useState<boolean>(false);
+  const [spinStatus, setSpinStatus] = React.useState<boolean>(false);
   const divRef = React.useRef<HTMLDivElement>(null);
   const toolbarconfig = [
     'outline',
@@ -49,15 +48,16 @@ const VditorContainer = (props: VditorContainerProps) => {
         },
       });
     } else {
-      setLoading(true);
-      // @ts-ignore
-      Vditor.preview(divRef.current, value, {}).then(() => {
-        setLoading(false);
-      });
+      setSpinStatus(true);
+      if (value && value != undefined) {
+        // @ts-ignore
+        Vditor.preview(divRef.current, value, {});
+        setSpinStatus(false);
+      }
     }
   }, [props.value]);
   return (
-    <Spin spinning={loading}>
+    <Spin spinning={spinStatus}>
       <div id="vditor" ref={divRef}></div>
     </Spin>
   );

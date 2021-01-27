@@ -85,6 +85,9 @@ const AboutPage = () => {
       .finally(() => {
         setAddTagDrawerStatus(false);
         addTagForm.current?.resetForm();
+        setTimeout(() => {
+          location.reload();
+        }, 500);
       });
   };
 

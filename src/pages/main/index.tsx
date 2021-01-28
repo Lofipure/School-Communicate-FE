@@ -1,30 +1,22 @@
 import * as React from 'react';
 import { getAllArticle } from '@/Api';
 import axios from 'axios';
-import ArticleCard, { ArticleCardProps } from '@/Components/ArticleCard';
-import { Spin } from 'antd';
+import ArticleCard, { ArticleInfoProps } from '@/Components/ArticleCard';
 
 const MainPage: React.FC = () => {
-  const [cardInfo, setCardInfo] = React.useState<ArticleCardProps[]>();
-  const [loading, setLoading] = React.useState<boolean>(true);
+  const [cardInfo, setCardInfo] = React.useState<ArticleInfoProps[]>();
   React.useEffect(() => {
     axios({
       method: getAllArticle.method,
       url: getAllArticle.url,
-    })
-      .then((res) => {
-        setCardInfo(res.data);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    }).then((res) => {
+      setCardInfo(res.data);
+    });
   }, []);
   return (
-    <Spin spinning={loading}>
-      <div className="main-page">
-        <ArticleCard data={cardInfo || []} />
-      </div>
-    </Spin>
+    <div className="main-page">
+      <ArticleCard data={cardInfo || []} />
+    </div>
   );
 };
 

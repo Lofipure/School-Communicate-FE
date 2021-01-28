@@ -9,6 +9,7 @@ import {
   CalendarOutlined,
 } from '@ant-design/icons';
 import { history } from 'umi';
+import { proviceMap, contryMap, cityMap } from '@/constant/city';
 export interface UserInfoProps {
   name: string;
   email: string;
@@ -28,17 +29,27 @@ export interface ArticleInfoProps {
 }
 
 export interface ArticleCardProps {
-  data: ArticleCardProps[];
+  data: ArticleInfoProps[];
 }
 
 const ArticleCard = (props: ArticleCardProps) => {
+  let [data, setData] = React.useState<ArticleInfoProps[]>();
+  React.useEffect(() => {
+    let dataTemp: ArticleInfoProps[] = props.data;
+    dataTemp = dataTemp.map((item: ArticleInfoProps, index: number) => {
+      item.authorInfo.location = JSON.parse(item.authorInfo.location);
+      return item;
+    });
+    // console.log(dataTemp);
+    setData(dataTemp);
+  }, [props]);
   return (
     <div className="article-card-container">
       <List
         itemLayout="vertical"
         size="default"
         // @ts-ignore
-        dataSource={props.data}
+        dataSource={data}
         renderItem={(item: ArticleInfoProps, index: number) => (
           <List.Item
             className="article-card-item"
@@ -62,7 +73,10 @@ const ArticleCard = (props: ArticleCardProps) => {
               </span>,
               <span className="article-card-item-author">
                 <PushpinOutlined className="article-card-item-author-icon" />
-                {item.authorInfo.location}
+                {/* {item.authorInfo.location} */}
+                {`${proviceMap[item.authorInfo.location[0]]}/${
+                  cityMap[item.authorInfo.location[1]]
+                }/${contryMap[item.authorInfo.location[2]]}`}
               </span>,
               <span className="article-card-item-author">
                 <CalendarOutlined className="article-card-item-author-icon" />

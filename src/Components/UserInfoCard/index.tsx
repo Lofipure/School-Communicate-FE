@@ -19,7 +19,7 @@ type UserInfoType = {
   major: string;
   studentID: string;
   grade: string;
-  location: string[];
+  location: string;
 };
 import { proviceMap, contryMap, cityMap } from '@/constant/city';
 const UserInfoCard: React.FC = () => {
@@ -32,7 +32,6 @@ const UserInfoCard: React.FC = () => {
       url: getUserByEmailApi.url + `?email=${email}`,
     }).then((res) => {
       let userInfoTemp: UserInfoType = res.data[0];
-      // @ts-ignore
       userInfoTemp.location = JSON.parse(userInfoTemp.location);
       setUserInfo(userInfoTemp);
     });
@@ -58,9 +57,9 @@ const UserInfoCard: React.FC = () => {
       </div>
       <div className="user-info-row">
         <Tag color="magenta" icon={<EnvironmentOutlined />}>
-          {`${proviceMap[userInfo?.location[0] || '']}/${
-            cityMap[userInfo?.location[1] || '']
-          }/${contryMap[userInfo?.location[2] || '']}`}
+          {`${proviceMap[userInfo?.location[0] || 0]}/${
+            cityMap[userInfo?.location[1] || 0]
+          }/${contryMap[userInfo?.location[2] || 0]}`}
         </Tag>
       </div>
     </div>

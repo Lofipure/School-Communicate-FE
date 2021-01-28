@@ -101,7 +101,13 @@ const commentGetGood: AxiosRequestConfig = {
   method: 'GET',
 };
 
+const getUserInfoByProviceCode: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/getUserInfoByProviceCode`,
+  method: 'GET',
+};
+
 export {
+  getUserInfoByProviceCode,
   commentGetGood,
   articleGetGood,
   articleGetBad,

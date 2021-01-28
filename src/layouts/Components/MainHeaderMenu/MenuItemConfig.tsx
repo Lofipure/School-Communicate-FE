@@ -5,6 +5,7 @@ import {
   FileAddOutlined,
   LogoutOutlined,
   MacCommandOutlined,
+  DatabaseOutlined,
 } from '@ant-design/icons';
 interface MenuItemProps {
   icon: React.ReactNode;
@@ -52,6 +53,15 @@ const mainPageConfig: MenuItemProps[] = [
     icon: <MacCommandOutlined />,
     onClick: () => {
       history.push('/main');
+    },
+  },
+  {
+    key: 'data',
+    title: 'Data',
+    text: '数据统计',
+    icon: <DatabaseOutlined />,
+    onClick: () => {
+      history.push('/data');
     },
   },
   {

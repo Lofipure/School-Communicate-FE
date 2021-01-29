@@ -5,13 +5,13 @@ import { HeatMapOutlined, BookOutlined } from '@ant-design/icons';
 
 export const tabConfig = [
   {
+    tab: '点赞榜',
+    children: <GoodTop />,
+    icon: <BookOutlined />,
+  },
+  {
     tab: '校友分布',
     children: <MapTotal />,
     icon: <HeatMapOutlined />,
-  },
-  {
-    tab: '阅读榜',
-    children: <GoodTop />,
-    icon: <BookOutlined />,
   },
 ];

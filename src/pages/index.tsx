@@ -9,6 +9,7 @@ import filterConfig from './filterConfig.index';
 import axios, { AxiosResponse } from 'axios';
 import { loginApi } from '@/Api';
 import { StateType } from 'typings';
+import MainPageShow from './Components/MainPageShow';
 
 const IndexPage = () => {
   const loginModalStatus: boolean = useSelector(
@@ -60,7 +61,7 @@ const IndexPage = () => {
           ref={loginForm}
         />
       </Modal>
-      校友会主页？
+      <MainPageShow />
     </div>
   );
 };

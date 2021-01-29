@@ -6,7 +6,9 @@ import {
   LogoutOutlined,
   MacCommandOutlined,
   DatabaseOutlined,
+  TeamOutlined,
 } from '@ant-design/icons';
+import { message } from 'antd';
 interface MenuItemProps {
   icon: React.ReactNode;
   key: string;
@@ -29,6 +31,15 @@ const indexMainPageConfig: MenuItemProps[] = [
     icon: <FileAddOutlined />,
     onClick: () => {
       history.push('/register');
+    },
+  },
+  {
+    key: 'aboutus',
+    title: 'AboutUs',
+    text: '关于我们',
+    icon: <TeamOutlined />,
+    onClick: () => {
+      message.success('Version 0.1');
     },
   },
 ];

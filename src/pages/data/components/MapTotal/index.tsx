@@ -35,7 +35,7 @@ const MapTotal = () => {
       logoVisible: false,
       map: new Mapbox({
         style: {},
-        zoom: 3,
+        zoom: 4,
         maxZoom: 6,
         minZoom: 3,
       }),

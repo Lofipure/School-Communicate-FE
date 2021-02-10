@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Input, Cascader } from 'antd';
 import { FilterConfig } from 'typings';
 import { getItem } from '@/constant/city';
-
+import UploadAvatar from '@/Components/UploadAvatar';
 const locationOption = getItem();
 interface CascaderOptionsProps {
   label: string;
@@ -466,6 +466,13 @@ export const cascaderOptions: CascaderOptionsProps[] = [
 ];
 
 const filterConfig: FilterConfig[] = [
+  {
+    key: 'avatar',
+    label: '头像',
+    options: {},
+    span: 24,
+    widget: <UploadAvatar />,
+  },
   {
     key: 'email',
     label: '邮箱',

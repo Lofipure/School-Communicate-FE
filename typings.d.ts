@@ -46,4 +46,5 @@ interface UserInfo {
   grade: number;
   location: string[];
   studentID: string;
+  avatar: string;
 }

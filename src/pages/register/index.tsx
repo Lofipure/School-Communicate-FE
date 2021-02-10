@@ -12,7 +12,6 @@ const Register = () => {
     null,
   );
   const handleSubmit = () => {
-    console.log(registerUserForm.current?.getFieldValues());
     axios({
       url: reigsterApi.url,
       method: reigsterApi.method,

@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { Comment, Spin, List, Tooltip, Button, Row, Tag, message } from 'antd';
+import {
+  Comment,
+  Spin,
+  List,
+  Tooltip,
+  Button,
+  Avatar,
+  Tag,
+  message,
+} from 'antd';
 import { getCommentsByArticleId, commentGetGood } from '@/Api';
 import axios from 'axios';
 import { authorInfoProps } from '@/Components/ArticleShow';
@@ -40,6 +49,7 @@ const CommentsList = (props: CommentsListProps) => {
     })
       .then((res) => {
         setCommentsData(res.data);
+        console.log(res.data);
       })
       .finally(() => {
         commentsData?.length >= 0 && setSpinstatus(false);
@@ -83,12 +93,11 @@ const CommentsList = (props: CommentsListProps) => {
                   </Tooltip>
                 }
                 avatar={
-                  <UserOutlined
+                  <Avatar
+                    src={item.commenterInfo.avatar}
+                    size="large"
                     style={{
-                      color: '#acacac',
-                      border: '1px solid #acacac',
-                      padding: '.3rem',
-                      borderRadius: '50%',
+                      border: '1px solid #999',
                     }}
                   />
                 }

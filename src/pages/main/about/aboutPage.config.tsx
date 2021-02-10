@@ -1,16 +1,16 @@
 import { FilterConfig, UserInfo } from 'typings';
 import { Major, College } from '@/constant/enum';
-import { Input, Cascader, Tag } from 'antd';
-import React from 'react';
+import { Input, Cascader, Tag, Avatar } from 'antd';
+import React, { ReactNode } from 'react';
 import { cascaderOptions } from '@/pages/register/filterConfig.index';
 import { ColumnsType } from 'antd/lib/table';
 import { TagsOutlined } from '@ant-design/icons';
 import ArticleOpeaGroup from '@/Components/ArticleOpeaGroup';
-import TagOpeaGroup from '@/Components/TagOpeaGroup';
+import UploadAvatar from '@/Components/UploadAvatar';
 import { getItem, proviceMap, cityMap, contryMap } from '@/constant/city';
 const locationOptions = getItem();
 export interface DescriptionItemProps {
-  content: string;
+  content: string | ReactNode;
   span?: number;
   label: string;
 }
@@ -57,6 +57,13 @@ export const getUserInfo = (
 ];
 
 export const modifiedFilterConfig: FilterConfig[] = [
+  {
+    key: 'avatar',
+    label: '头像',
+    options: {},
+    span: 18,
+    widget: <UploadAvatar />,
+  },
   {
     key: 'email',
     label: '邮箱',

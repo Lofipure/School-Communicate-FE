@@ -18,6 +18,7 @@ export interface authorInfoProps {
   email?: string;
   telephone?: string;
   location?: string;
+  avatar?: string;
 }
 export interface ArticleShowPorps {
   articleTitle?: string;

@@ -6,7 +6,6 @@ import { getUserByEmailApi } from '@/Api';
 import {
   DribbbleOutlined,
   CodepenCircleOutlined,
-  UserOutlined,
   EnvironmentOutlined,
 } from '@ant-design/icons';
 import './index.less';
@@ -20,11 +19,11 @@ type UserInfoType = {
   studentID: string;
   grade: string;
   location: string;
+  avatar: string;
 };
 import { proviceMap, contryMap, cityMap } from '@/constant/city';
 const UserInfoCard: React.FC = () => {
   const [userInfo, setUserInfo] = React.useState<UserInfoType>();
-
   React.useEffect(() => {
     const { email } = JSON.parse(localStorage.getItem('userInfo') || '');
     axios({
@@ -39,7 +38,11 @@ const UserInfoCard: React.FC = () => {
   return (
     <div className="user-info-card">
       <div className="user-info-row">
-        <Avatar size="large" icon={<UserOutlined />} />
+        <Avatar
+          size="large"
+          src={userInfo?.avatar}
+          className="user-info-avatar"
+        ></Avatar>
       </div>
       <div className="user-info-row">
         <span className="user-info-row-inner">{userInfo?.name}</span>

@@ -7,6 +7,7 @@ import {
   HeartOutlined,
 } from '@ant-design/icons';
 import { cityMap, contryMap } from '@/constant/city';
+import './index.less';
 export interface MateProps {
   name?: string;
   major?: string;
@@ -43,13 +44,25 @@ const ProviceMateCard = (props: ProviceMateCardProps) => {
         <List.Item
           key={index}
           actions={[
-            <Tag color="processing" icon={<ExperimentOutlined />}>
+            <Tag
+              color="processing"
+              icon={<ExperimentOutlined />}
+              className="provice-mate-tag"
+            >
               {item.major}
             </Tag>,
-            <Tag color="processing" icon={<EnvironmentOutlined />}>
+            <Tag
+              color="processing"
+              icon={<EnvironmentOutlined />}
+              className="provice-mate-tag"
+            >
               {item.location}
             </Tag>,
-            <Tag color="red" icon={<HeartOutlined />}>
+            <Tag
+              color="red"
+              icon={<HeartOutlined />}
+              className="provice-mate-tag provice-mate-tag-hidden"
+            >
               {item.grade}级校友
             </Tag>,
           ]}

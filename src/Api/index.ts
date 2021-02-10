@@ -106,7 +106,19 @@ const getUserInfoByProviceCode: AxiosRequestConfig = {
   method: 'GET',
 };
 
+const getGoodNumberFromEmail: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/getGoodNumberFromEmail`,
+  method: 'GET',
+};
+
+const getArticleNumberFromEmail: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/getArticleNumberFromEmail`,
+  method: 'GET',
+};
+
 export {
+  getArticleNumberFromEmail,
+  getGoodNumberFromEmail,
   getUserInfoByProviceCode,
   commentGetGood,
   articleGetGood,

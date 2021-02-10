@@ -20,8 +20,9 @@ const MyTitle: React.FC<{}> = () => {
     >
       <CrownOutlined />
       <span className="header-title-text">
-        <span>西安科技大学</span>
+        <span className="mini-hidden">西安科技大学</span>
         <Divider
+          className="mini-hidden"
           type="vertical"
           style={{ color: 'white', backgroundColor: 'white' }}
         />

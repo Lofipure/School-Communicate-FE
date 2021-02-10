@@ -32,6 +32,7 @@ const TableComponent: React.FC<TableProps> = (props: TableProps) => {
       columns={props.columns}
       dataSource={data}
       loading={tableStatus}
+      pagination={false}
     />
   );
 };

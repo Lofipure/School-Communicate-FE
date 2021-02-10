@@ -69,7 +69,7 @@ const MapTotal = () => {
   return (
     <div>
       <Modal
-        width={'50vw'}
+        className="provice-mate-card"
         title={showProviceName}
         visible={modalStatus}
         onCancel={() => {

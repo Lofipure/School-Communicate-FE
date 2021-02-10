@@ -30,7 +30,6 @@ const ArticleMainPage = () => {
   }, []);
 
   const addReaderAction = (type: 'good' | 'bad') => {
-    // console.log(type, id);
     let targetApi: AxiosRequestConfig =
       type == 'good' ? articleGetGood : articleGetBad;
     axios({

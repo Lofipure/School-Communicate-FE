@@ -28,11 +28,13 @@ import {
   addTagFormColumn,
 } from './aboutPage.config';
 import InfoForm from '@/Components/InfoForm';
+import PersonalData from './Components/PersonData';
 
 import './index.less';
 import { UserInfo } from 'typings';
 import { PLACEHOLDER } from '@/constant';
 import { history } from 'umi';
+import { TagOutlined, BookOutlined, DatabaseOutlined } from '@ant-design/icons';
 
 const { TabPane } = Tabs;
 const AboutPage = () => {
@@ -206,7 +208,15 @@ const AboutPage = () => {
       </div>
       <div className="about-page-item">
         <Tabs>
-          <TabPane key={1} tab="所有标签">
+          <TabPane
+            key={1}
+            tab={
+              <span>
+                <TagOutlined />
+                <span>所有标签</span>
+              </span>
+            }
+          >
             <Button
               className="tabpane-button"
               type="primary"
@@ -222,7 +232,15 @@ const AboutPage = () => {
               Api={getAllTagDetailInfo}
             />
           </TabPane>
-          <TabPane key={2} tab="我的文章">
+          <TabPane
+            key={2}
+            tab={
+              <span>
+                <BookOutlined />
+                <span>我的文章</span>
+              </span>
+            }
+          >
             <Button
               className="tabpane-button"
               type="primary"
@@ -237,6 +255,17 @@ const AboutPage = () => {
               rowKey={'articleTitle'}
               Api={getUserArticle}
             />
+          </TabPane>
+          <TabPane
+            key={3}
+            tab={
+              <span>
+                <DatabaseOutlined />
+                <span>我的数据</span>
+              </span>
+            }
+          >
+            <PersonalData email={localStorage.getItem('email') || ''} />
           </TabPane>
         </Tabs>
       </div>

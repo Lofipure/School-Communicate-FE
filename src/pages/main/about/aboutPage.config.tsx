@@ -150,11 +150,11 @@ export const tagTableColumn: ColumnsType<any> = [
     key: 'articleNumber',
     render: (item, index) => item,
   },
-  {
-    title: '操作',
-    key: 'opea',
-    render: (item) => <TagOpeaGroup {...item} />,
-  },
+  // {
+  //   title: '操作',
+  //   key: 'opea',
+  //   render: (item) => <TagOpeaGroup {...item} />,
+  // },
 ];
 
 export const articleTableColumn: ColumnsType<any> = [

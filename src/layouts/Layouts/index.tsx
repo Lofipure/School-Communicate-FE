@@ -17,6 +17,7 @@ const LayoutContainer: React.FC<{}> = (props) => {
           {history.location.pathname != '/' &&
             history.location.pathname != '/register' && (
               <Sider
+                className={'sidebar-container'}
                 style={{
                   backgroundColor: 'rgb(240,242,245)',
                   marginLeft: '1rem',

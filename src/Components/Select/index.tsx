@@ -29,7 +29,6 @@ const SelectCompoent = (props: SelectCompoentProps) => {
     })
       .then((res) => {
         setOptions(res.data);
-        console.log(options);
       })
       .finally(() => {
         setLoading(false);

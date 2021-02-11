@@ -69,7 +69,6 @@ const AboutPage = () => {
           userInfoTemp.major.toString(),
         ];
         userInfoTemp.location = JSON.parse(userInfoTemp.location);
-        console.log(userInfo);
         setUserInfo(userInfoTemp);
         setRenderItem(getUserInfo(res.data[0]));
         setUserName(res.data[0].name);

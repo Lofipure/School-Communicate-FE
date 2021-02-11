@@ -65,7 +65,7 @@ export const cascaderOptions: CascaderOptionsProps[] = [
       },
       {
         label: '测绘工程卓越',
-        value: '10',
+        value: '11',
       },
       {
         label: '地理信息科学',
@@ -470,7 +470,7 @@ const filterConfig: FilterConfig[] = [
     key: 'avatar',
     label: '头像',
     options: {},
-    span: 24,
+    span: 2,
     widget: <UploadAvatar />,
   },
   {
@@ -485,7 +485,7 @@ const filterConfig: FilterConfig[] = [
         },
       ],
     },
-    span: 10,
+    span: 9,
     widget: <Input allowClear />,
   },
   {
@@ -494,7 +494,7 @@ const filterConfig: FilterConfig[] = [
     options: {
       rules: [{ required: true, message: '请输入学号' }],
     },
-    span: 10,
+    span: 9,
     widget: <Input allowClear />,
   },
   {
@@ -503,7 +503,7 @@ const filterConfig: FilterConfig[] = [
     options: {
       rules: [{ required: true, message: '请输入姓名' }],
     },
-    span: 10,
+    span: 11,
     widget: <Input allowClear />,
   },
   {
@@ -515,7 +515,7 @@ const filterConfig: FilterConfig[] = [
         { pattern: /^1[3-9]\d{9}$/, message: '请检查格式' },
       ],
     },
-    span: 10,
+    span: 11,
     widget: <Input allowClear />,
   },
   {
@@ -524,13 +524,13 @@ const filterConfig: FilterConfig[] = [
     options: {
       rules: [{ required: true, message: '请输入年级' }],
     },
-    span: 10,
+    span: 11,
     widget: <Input allowClear />,
   },
   {
     key: 'collegeAndMajor',
     label: '学院 / 专业',
-    span: 10,
+    span: 11,
     widget: <Cascader placeholder="" options={cascaderOptions} allowClear />,
     options: {
       rules: [{ required: true, message: '请选择学院 / 专业' }],
@@ -542,7 +542,7 @@ const filterConfig: FilterConfig[] = [
     options: {
       rules: [{ required: true, message: '请选择当前所在地' }],
     },
-    span: 10,
+    span: 11,
     widget: <Cascader allowClear options={locationOption} placeholder="" />,
   },
   {
@@ -551,7 +551,7 @@ const filterConfig: FilterConfig[] = [
     options: {
       rules: [{ required: true, message: '请输入密码' }],
     },
-    span: 10,
+    span: 11,
     widget: <Input.Password allowClear />,
   },
 ];

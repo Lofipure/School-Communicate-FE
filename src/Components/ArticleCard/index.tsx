@@ -40,7 +40,6 @@ const ArticleCard = (props: ArticleCardProps) => {
       item.authorInfo.location = JSON.parse(item.authorInfo.location);
       return item;
     });
-    // console.log(dataTemp);
     setData(dataTemp);
   }, [props]);
   return (

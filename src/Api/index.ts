@@ -116,7 +116,12 @@ const getArticleNumberFromEmail: AxiosRequestConfig = {
   method: 'GET',
 };
 
+const getOrderedArticleList: AxiosRequestConfig = {
+  url: `${ROOT_PATH}/getOrderedArticleList`,
+  method: 'GET',
+};
 export {
+  getOrderedArticleList,
   getArticleNumberFromEmail,
   getGoodNumberFromEmail,
   getUserInfoByProviceCode,

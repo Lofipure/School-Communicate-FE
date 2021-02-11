@@ -21,7 +21,6 @@ export interface ProviceMateCardProps {
 
 const ProviceMateCard = (props: ProviceMateCardProps) => {
   const [userInfo, setUserInfo] = React.useState<MateProps[]>([]);
-  console.log(props);
   React.useEffect(() => {
     let tempList: MateProps[] = props.matesList.map(
       (item: MateProps, index: number) => ({

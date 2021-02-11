@@ -1,13 +1,8 @@
 import * as React from 'react';
 // @ts-ignore
 import styles from './index.less';
-import { SelectStatusComponent } from './config';
-import { Col, Input, Row, Tag, Button, message } from 'antd';
-import {
-  UserOutlined,
-  CoffeeOutlined,
-  ThunderboltOutlined,
-} from '@ant-design/icons';
+import { Comment, Tag, Button, message, Avatar, Input } from 'antd';
+import { CoffeeOutlined, ThunderboltOutlined } from '@ant-design/icons';
 import { authorInfoProps } from '@/Components/ArticleShow';
 import { history } from 'umi';
 import { pushComment } from '@/Api';
@@ -18,7 +13,6 @@ interface CommentInputProps extends authorInfoProps {}
 interface CommentPorps {
   commenterEmail?: string;
   commentText?: string;
-  commentStatus?: string;
   articleId?: string;
 }
 
@@ -45,6 +39,7 @@ const CommentInput = (props: CommentInputProps) => {
         location.reload();
       }, 500);
     });
+    console.log(commentInfo);
   };
   React.useEffect(() => {
     setCommentInfo({
@@ -55,48 +50,30 @@ const CommentInput = (props: CommentInputProps) => {
   }, []);
   return (
     <div className={styles['container']}>
-      <Input
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          setCommentInfo({ ...commentInfo, commentText: e.target.value });
-        }}
-        addonBefore={
-          <SelectStatusComponent
-            onChange={(value: string) => {
-              setCommentInfo({ ...commentInfo, commentStatus: value });
+      <Comment
+        avatar={<Avatar src={props.avatar} />}
+        content={
+          <Input.TextArea
+            value={commentInfo?.commentText}
+            onChange={(event: React.ChangeEvent<HTMLTextAreaElement>) => {
+              setCommentInfo({
+                ...commentInfo,
+                commentText: event.target.value,
+              });
             }}
-          />
+          ></Input.TextArea>
         }
+        actions={[
+          <Button
+            loading={pushStatus}
+            icon={<ThunderboltOutlined />}
+            onClick={handlePush}
+            type="primary"
+          >
+            发布评论
+          </Button>,
+        ]}
       />
-      <Row justify="end" align="middle">
-        <Col span={3}>
-          <span className={styles['tip']}>
-            <Tag
-              icon={<CoffeeOutlined />}
-              color={
-                email == localStorage.getItem('email') ? 'warning' : 'success'
-              }
-            >
-              {email == localStorage.getItem('email') ? '我是作者' : '我是读者'}
-            </Tag>
-          </span>
-        </Col>
-        <span className={styles['commenter']}>
-          <UserOutlined className={styles['comment-icon']} />
-          {`${localStorage.getItem('email')}`}
-        </span>
-        <Col span={2}>
-          <span className={styles['tip']}>
-            <Button
-              type="primary"
-              icon={<ThunderboltOutlined />}
-              onClick={handlePush}
-              loading={pushStatus}
-            >
-              发布评论
-            </Button>
-          </span>
-        </Col>
-      </Row>
     </div>
   );
 };

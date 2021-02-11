@@ -49,7 +49,6 @@ const CommentsList = (props: CommentsListProps) => {
     })
       .then((res) => {
         setCommentsData(res.data);
-        console.log(res.data);
       })
       .finally(() => {
         commentsData?.length >= 0 && setSpinstatus(false);
@@ -95,7 +94,6 @@ const CommentsList = (props: CommentsListProps) => {
                 avatar={
                   <Avatar
                     src={item.commenterInfo.avatar}
-                    size="large"
                     style={{
                       border: '1px solid #999',
                     }}

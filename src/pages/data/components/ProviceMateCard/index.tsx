@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, Tag, Row, Col } from 'antd';
+import { List, Tag, Row, Col, Avatar } from 'antd';
 import { Major } from '@/constant/enum';
 import {
   EnvironmentOutlined,
@@ -14,6 +14,7 @@ export interface MateProps {
   location?: string;
   email?: string;
   grade?: string;
+  avatar?: string;
 }
 export interface ProviceMateCardProps {
   matesList: MateProps[];
@@ -31,6 +32,7 @@ const ProviceMateCard = (props: ProviceMateCardProps) => {
           contryMap[JSON.parse(item.location || '')[2]]
         }`,
         grade: item.grade,
+        avatar: item.avatar,
       }),
     );
     setUserInfo(tempList);
@@ -66,10 +68,11 @@ const ProviceMateCard = (props: ProviceMateCardProps) => {
             </Tag>,
           ]}
         >
-          <Row align="middle">
-            <span className="mate-card-name">{item.name}</span>
-            <span className="mate-card-email">{item.email}</span>
-          </Row>
+          <List.Item.Meta
+            avatar={<Avatar src={item.avatar}></Avatar>}
+            description={item.email}
+            title={item.name}
+          ></List.Item.Meta>
         </List.Item>
       )}
     ></List>

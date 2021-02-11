@@ -1,7 +1,11 @@
 import * as React from 'react';
-import { Upload, message, Image } from 'antd';
+import { Upload, message, Image, Spin } from 'antd';
 import { UploadChangeParam } from 'antd/es/upload/interface';
-import { UploadOutlined } from '@ant-design/icons';
+import {
+  UploadOutlined,
+  LoadingOutlined,
+  PlusOutlined,
+} from '@ant-design/icons';
 
 const UploadAvatar = (props: any) => {
   const [loading, setLoading] = React.useState<boolean>(false);
@@ -50,7 +54,15 @@ const UploadAvatar = (props: any) => {
       beforeUpload={beforeUploadHandleFunc}
       onChange={handleChange}
     >
-      {imageUrl ? <Image src={imageUrl}></Image> : <UploadOutlined />}
+      {imageUrl ? (
+        <Image src={imageUrl}></Image>
+      ) : loading ? (
+        <Spin spinning>
+          <UploadOutlined />
+        </Spin>
+      ) : (
+        <PlusOutlined />
+      )}
     </Upload>
   );
 };

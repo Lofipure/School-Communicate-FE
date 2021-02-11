@@ -39,7 +39,7 @@ const indexMainPageConfig: MenuItemProps[] = [
     text: '关于我们',
     icon: <TeamOutlined />,
     onClick: () => {
-      message.success('Version 0.1');
+      message.success('Version 0.3');
     },
   },
 ];

@@ -5,7 +5,7 @@ import { history } from 'umi';
 import { CrownOutlined } from '@ant-design/icons';
 const MyTitle: React.FC<{}> = () => {
   return (
-    <span
+    <div
       className="header-title"
       onClick={() => {
         if (
@@ -28,7 +28,7 @@ const MyTitle: React.FC<{}> = () => {
         />
         <span>校友会</span>
       </span>
-    </span>
+    </div>
   );
 };
 

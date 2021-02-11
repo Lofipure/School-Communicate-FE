@@ -60,7 +60,11 @@ const ArticleMainPage = () => {
   return (
     <Spin spinning={loading}>
       <div className="article-main-page">
-        <Row justify="center" align="middle" className="article-main-page-text">
+        <Row
+          justify="center"
+          align="middle"
+          className="article-main-page-text mobile-no-padding mobile-no-margin"
+        >
           <Col span={23}>
             <ArticleShow {...articleInfo} />
           </Col>
@@ -100,7 +104,11 @@ const ArticleMainPage = () => {
         </Row>
       </div>
       <div className="article-main-page">
-        <Row justify="center" align="middle" className="article-main-page-text">
+        <Row
+          justify="center"
+          align="middle"
+          className="article-main-page-text  mobile-no-margin mobile-no-padding"
+        >
           <Col span={24}>
             <Divider>
               <span className="article-main-page-divider">

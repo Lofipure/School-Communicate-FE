@@ -12,7 +12,6 @@ import './index.less';
 import { MenuFoldOutlined } from '@ant-design/icons';
 const HeaderMenu: React.FC<{}> = () => {
   const dispatch = useDispatch<any>();
-
   return (
     <React.Fragment>
       <Menu mode="horizontal" className="header-menu" theme="dark">
@@ -70,7 +69,7 @@ const HeaderMenu: React.FC<{}> = () => {
         className="header-menu-mobile"
         trigger={['click']}
         overlay={
-          <Menu mode="inline" theme="dark">
+          <Menu theme="dark">
             {history.location.pathname === '/' && (
               <>
                 {indexMainPageConfig.map((item) => (

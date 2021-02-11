@@ -39,7 +39,6 @@ const CommentInput = (props: CommentInputProps) => {
         location.reload();
       }, 500);
     });
-    console.log(commentInfo);
   };
   React.useEffect(() => {
     setCommentInfo({

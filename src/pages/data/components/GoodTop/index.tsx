@@ -37,7 +37,6 @@ const GoodTop = () => {
       url: getOrderedArticleList.url,
     })
       .then((res) => {
-        console.log(res.data);
         setArticleList(res.data);
       })
       .finally(() => {
@@ -63,7 +62,11 @@ const GoodTop = () => {
               <Tag icon={<CalendarOutlined />} color="processing">
                 {new Date(item.createdAt).toLocaleDateString()}
               </Tag>,
-              <Tag color="volcano" icon={<CodepenOutlined />}>
+              <Tag
+                color="volcano"
+                icon={<CodepenOutlined />}
+                className="mobile-hidden"
+              >
                 {Major[item.authorInfo.major]}
               </Tag>,
             ]}

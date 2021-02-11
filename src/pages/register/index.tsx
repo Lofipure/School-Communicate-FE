@@ -27,8 +27,8 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
-      <div className="form-content-container">
+    <div className="register-container mobile-no-margin">
+      <div className="form-content-container mobile-no-margin mobile-no-padding">
         <UserInfoForm
           className="register-form"
           filters={filterConfig}

@@ -7,9 +7,6 @@ import {
   Skeleton,
   message,
   Tabs,
-  Drawer,
-  Row,
-  Col,
 } from 'antd';
 import {
   getUserByEmailApi,
@@ -117,40 +114,23 @@ const AboutPage = () => {
   };
   return (
     <React.Fragment>
-      <Drawer
+      <Modal
         title="新增标签"
-        height={'30vh'}
         visible={addTagDrawerStatus}
-        placement="top"
-        onClose={() => {
+        onOk={addNewTag}
+        onCancel={() => {
           setAddTagDrawerStatus(false);
         }}
-        footer={
-          <React.Fragment>
-            <Button type="primary" className="add-form-btn" onClick={addNewTag}>
-              新增
-            </Button>
-            <Button
-              className="add-form-btn"
-              onClick={() => {
-                setAddTagDrawerStatus(false);
-              }}
-            >
-              关闭
-            </Button>
-          </React.Fragment>
-        }
-        footerStyle={{
-          textAlign: 'center',
-        }}
+        okText="新增"
+        cancelText="关闭"
       >
         <InfoForm
           filters={addTagFormColumn}
           layout="horizontal"
           ref={addTagForm}
         />
-      </Drawer>
-      <div className="about-page-item">
+      </Modal>
+      <div className="about-page-item mobile-no-margin">
         <Modal
           visible={modifiedModalStatus}
           title={`修改${username}的信息`}
@@ -208,7 +188,7 @@ const AboutPage = () => {
           </Descriptions>
         </Skeleton>
       </div>
-      <div className="about-page-item">
+      <div className="about-page-item mobile-no-margin">
         <Tabs>
           <TabPane
             key={1}
@@ -229,6 +209,7 @@ const AboutPage = () => {
               新增标签
             </Button>
             <TableComponent
+              scroll={470}
               rowKey={'tName'}
               columns={tagTableColumn}
               Api={getAllTagDetailInfo}
@@ -253,6 +234,7 @@ const AboutPage = () => {
               新建文章
             </Button>
             <TableComponent
+              scroll={580}
               columns={articleTableColumn}
               rowKey={'articleTitle'}
               Api={getUserArticle}

@@ -43,7 +43,7 @@ const ArticleCard = (props: ArticleCardProps) => {
     setData(dataTemp);
   }, [props]);
   return (
-    <div className="article-card-container">
+    <div className="article-card-container mobile-no-margin mobile-no-padding">
       <List
         itemLayout="vertical"
         size="default"
@@ -66,18 +66,17 @@ const ArticleCard = (props: ArticleCardProps) => {
                 <UserOutlined className="article-card-item-author-icon" />
                 {item.authorInfo.name}
               </span>,
-              <span className="article-card-item-author">
+              <span className="article-card-item-author mobile-hidden">
                 <MailOutlined className="article-card-item-author-icon" />
                 {item.authorInfo.email}
               </span>,
-              <span className="article-card-item-author">
+              <span className="article-card-item-author mobile-hidden">
                 <PushpinOutlined className="article-card-item-author-icon" />
-                {/* {item.authorInfo.location} */}
                 {`${proviceMap[item.authorInfo.location[0]]}/${
                   cityMap[item.authorInfo.location[1]]
                 }/${contryMap[item.authorInfo.location[2]]}`}
               </span>,
-              <span className="article-card-item-author">
+              <span className="article-card-item-author mobile-hidden">
                 <CalendarOutlined className="article-card-item-author-icon" />
                 {new Date(item.createdAt).toLocaleDateString()}
               </span>,

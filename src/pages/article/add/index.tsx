@@ -30,7 +30,7 @@ const AddArticle = () => {
   };
   return (
     <div className="add-article-container">
-      <div className="add-article-page-container-item">
+      <div className="add-article-page-container-item mobile-hidden">
         <InfoForm
           ref={articleFormRef}
           filters={addArticleFormColumn}
@@ -47,6 +47,11 @@ const AddArticle = () => {
               发布
             </Button>
           </Col>
+        </Row>
+      </div>
+      <div className="add-article-page-container-item mobile-show">
+        <Row justify="center" align="middle">
+          为了您的书写体验，请使用PC访问此页面。
         </Row>
       </div>
     </div>

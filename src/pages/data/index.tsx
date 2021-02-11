@@ -7,7 +7,7 @@ const { TabPane } = Tabs;
 const Data = () => {
   React.useEffect(() => {}, []);
   return (
-    <div className="data-page-container">
+    <div className="data-page-container mobile-no-margin">
       <Tabs>
         {tabConfig.map((item, index: number) => (
           <TabPane

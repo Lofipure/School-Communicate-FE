@@ -144,24 +144,22 @@ export const tagTableColumn: ColumnsType<any> = [
     dataIndex: 'tName',
     key: 'tName',
     render: (item, index) => item,
+    width: 150,
   },
   {
     title: '简介',
     dataIndex: 'tagDesc',
     key: 'tagDesc',
     render: (item, index) => item,
+    width: 220,
   },
   {
-    title: '现有文章数',
+    title: '文章数',
     dataIndex: 'articleNumber',
     key: 'articleNumber',
     render: (item, index) => item,
+    width: 100,
   },
-  // {
-  //   title: '操作',
-  //   key: 'opea',
-  //   render: (item) => <TagOpeaGroup {...item} />,
-  // },
 ];
 
 export const articleTableColumn: ColumnsType<any> = [
@@ -170,12 +168,14 @@ export const articleTableColumn: ColumnsType<any> = [
     dataIndex: 'articleTitle',
     key: 'articleTitle',
     render: (item, index) => item,
+    width: 180,
   },
   {
     title: '发表日期',
     dataIndex: 'createdAt',
     key: 'createdAt',
     render: (item, index) => new Date(item).toLocaleDateString(),
+    width: 100,
   },
   {
     title: '标签',
@@ -190,11 +190,13 @@ export const articleTableColumn: ColumnsType<any> = [
         ))}
       </React.Fragment>
     ),
+    width: 100,
   },
   {
     title: '操作',
     key: 'opea',
     render: (item) => <ArticleOpeaGroup {...item} />,
+    width: 200,
   },
 ];
 

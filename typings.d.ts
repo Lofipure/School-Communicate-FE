@@ -19,7 +19,7 @@ interface FilterConfig {
   options?: {
     [key: string]: any;
   };
-  span?: number;
+  span?: any;
   widget: React.ReactNode;
 }
 

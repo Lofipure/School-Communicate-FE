@@ -7,6 +7,7 @@ interface TableProps {
   Api?: AxiosRequestConfig;
   columns: ColumnsType<any>;
   rowKey: string;
+  scroll: number;
 }
 
 const TableComponent: React.FC<TableProps> = (props: TableProps) => {
@@ -27,7 +28,7 @@ const TableComponent: React.FC<TableProps> = (props: TableProps) => {
   }, []);
   return (
     <Table
-      bordered
+      scroll={{ x: props.scroll }}
       rowKey={props.rowKey}
       columns={props.columns}
       dataSource={data}

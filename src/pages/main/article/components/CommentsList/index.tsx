@@ -93,10 +93,11 @@ const CommentsList = (props: CommentsListProps) => {
                 }
                 avatar={
                   <Avatar
-                    src={item.commenterInfo.avatar}
-                    style={{
-                      border: '1px solid #999',
-                    }}
+                    src={
+                      item.commenterInfo.avatar
+                        ? item.commenterInfo.avatar
+                        : 'http://114.116.246.240/static/wangziheng.42e14961.png'
+                    }
                   />
                 }
                 actions={[

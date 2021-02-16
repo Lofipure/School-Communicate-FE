@@ -50,7 +50,15 @@ const CommentInput = (props: CommentInputProps) => {
   return (
     <div className={styles['container']}>
       <Comment
-        avatar={<Avatar src={props.avatar} />}
+        avatar={
+          <Avatar
+            src={
+              props.avatar
+                ? props.avatar
+                : 'http://114.116.246.240/static/wangziheng.42e14961.png'
+            }
+          />
+        }
         content={
           <Input.TextArea
             value={commentInfo?.commentText}

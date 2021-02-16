@@ -7,6 +7,7 @@ import {
   DribbbleOutlined,
   CodepenCircleOutlined,
   EnvironmentOutlined,
+  UserOutlined,
 } from '@ant-design/icons';
 import './index.less';
 
@@ -46,7 +47,11 @@ const UserInfoCard: React.FC = () => {
         <div className="user-info-row">
           <Avatar
             size="large"
-            src={userInfo?.avatar}
+            src={
+              userInfo?.avatar
+                ? userInfo.avatar
+                : 'http://114.116.246.240/static/wangziheng.42e14961.png'
+            }
             className="user-info-avatar"
           ></Avatar>
         </div>

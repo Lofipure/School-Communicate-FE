@@ -29,14 +29,14 @@ const OpeaGroup = (props: OpeaGroupProps) => {
   };
   return (
     <Row justify="space-around">
-      <Button
+      {/* <Button
         icon={<EditOutlined />}
         onClick={() => {
           message.warn('该功能暂不支持，敬请期待。');
         }}
       >
         编辑
-      </Button>
+      </Button> */}
       <Popconfirm
         title={`确定要删除吗？`}
         placement="topRight"
@@ -44,8 +44,13 @@ const OpeaGroup = (props: OpeaGroupProps) => {
         cancelText="我再想想"
         onConfirm={handleOnDelete}
       >
-        <Button icon={<DeleteOutlined />} loading={loading} type="primary">
-          删除
+        <Button
+          icon={<DeleteOutlined />}
+          loading={loading}
+          type="primary"
+          danger
+        >
+          <span className="mobile-hidden">删除</span>
         </Button>
       </Popconfirm>
     </Row>

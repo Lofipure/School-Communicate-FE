@@ -67,10 +67,6 @@ const ArticleCard = (props: ArticleCardProps) => {
                 {item.authorInfo.name}
               </span>,
               <span className="article-card-item-author mobile-hidden">
-                <MailOutlined className="article-card-item-author-icon" />
-                {item.authorInfo.email}
-              </span>,
-              <span className="article-card-item-author mobile-hidden">
                 <PushpinOutlined className="article-card-item-author-icon" />
                 {`${proviceMap[item.authorInfo.location[0]]}/${
                   cityMap[item.authorInfo.location[1]]

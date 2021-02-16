@@ -2,7 +2,6 @@ import * as React from 'react';
 import { getAllArticle } from '@/Api';
 import axios from 'axios';
 import ArticleCard, { ArticleInfoProps } from '@/Components/ArticleCard';
-
 const MainPage: React.FC = () => {
   const [cardInfo, setCardInfo] = React.useState<ArticleInfoProps[]>();
   React.useEffect(() => {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Input, Cascader } from 'antd';
+import { Input, Cascader, Tooltip } from 'antd';
 import { FilterConfig } from 'typings';
 import { getItem } from '@/constant/city';
 import UploadAvatar from '@/Components/UploadAvatar';
@@ -522,7 +522,10 @@ const filterConfig: FilterConfig[] = [
     key: 'grade',
     label: '年级',
     options: {
-      rules: [{ required: true, message: '请输入年级' }],
+      rules: [
+        { required: true, message: '请输入年级' },
+        { pattern: /^20\w\w$/, message: '请输入格式为20**的字符串' },
+      ],
     },
     span: 20,
     widget: <Input allowClear />,

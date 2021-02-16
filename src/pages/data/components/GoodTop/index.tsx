@@ -9,7 +9,7 @@ import { getOrderedArticleList } from '@/Api';
 import axios from 'axios';
 import { Major } from '@/constant/enum';
 import './index.less';
-
+import { history } from 'umi';
 interface AuthorInfoProps {
   avatar: string;
   name: string;
@@ -23,6 +23,7 @@ interface ArticleInfoProps {
   createdAt: string;
   getGoodNumber: number;
   shortDesc: string;
+  aId: string;
 }
 
 const GoodTop = () => {
@@ -54,6 +55,9 @@ const GoodTop = () => {
         dataSource={articleList}
         renderItem={(item: ArticleInfoProps, index: number) => (
           <List.Item
+            onClick={() => {
+              history.push('/main/article/' + item.aId);
+            }}
             key={index}
             actions={[
               <Tag icon={<LikeOutlined />} color="success">

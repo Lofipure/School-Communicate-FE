@@ -1,69 +1,28 @@
 import * as React from 'react';
-import { Upload, message, Image, Spin } from 'antd';
-import { UploadChangeParam } from 'antd/es/upload/interface';
-import {
-  UploadOutlined,
-  LoadingOutlined,
-  PlusOutlined,
-} from '@ant-design/icons';
-
+import { message } from 'antd';
 const UploadAvatar = (props: any) => {
-  const [loading, setLoading] = React.useState<boolean>(false);
-  const [imageUrl, setImageUrl] = React.useState<string>('');
+  const ref = React.useRef<HTMLInputElement>(null);
   const { onChange } = props;
-
-  const getBase64 = (img: Blob, callback: Function) => {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback(reader.result));
-    reader.readAsDataURL(img);
-  };
-
-  const beforeUploadHandleFunc = (file: Blob) => {
-    const isJpgOrPng = file.type == 'image/jpeg' || file.type === 'image/png';
-    if (!isJpgOrPng) {
-      message.error('目前仅支持JPG/PNG格式的文件');
-    }
-    const isLt2M = file.size / 1024 / 1024 < 0.25;
-    if (!isLt2M) {
-      message.error('请上传小于256KB的图片');
-    }
-    return isJpgOrPng && isLt2M;
-  };
-
-  const handleChange = (info: UploadChangeParam) => {
-    if (info.file.status === 'uploading') {
-      setLoading(true);
-      return;
-    }
-    if (info.file.status === 'done') {
-      if (info.file.originFileObj) {
-        getBase64(info.file.originFileObj, (imageUrl: string) => {
-          setImageUrl(imageUrl);
-          setLoading(false);
-          onChange(imageUrl);
-        });
+  const inputChange = () => {
+    let fileReader = new FileReader();
+    if (ref.current?.files?.[0]) {
+      if (ref.current.files[0].size >= 75 * 1024) {
+        message.error('图片大小不得超过75KB');
+      } else {
+        fileReader.readAsDataURL(ref.current?.files?.[0]);
       }
     }
+    fileReader.onload = () => {
+      onChange(fileReader.result);
+    };
   };
-
   return (
-    <Upload
-      name="avatar"
-      listType="picture-card"
-      showUploadList={false}
-      beforeUpload={beforeUploadHandleFunc}
-      onChange={handleChange}
-    >
-      {imageUrl ? (
-        <Image src={imageUrl}></Image>
-      ) : loading ? (
-        <Spin spinning>
-          <UploadOutlined />
-        </Spin>
-      ) : (
-        <PlusOutlined />
-      )}
-    </Upload>
+    <input
+      type="file"
+      ref={ref}
+      onChange={inputChange}
+      accept="image/jpg,image/jpeg,image/gif,image/png"
+    ></input>
   );
 };
 

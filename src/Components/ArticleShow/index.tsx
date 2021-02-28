@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Typography, Row, Tag } from 'antd';
+import { Typography, Row, Tag, Spin } from 'antd';
 import {
   UserOutlined,
   CalendarOutlined,
@@ -54,7 +54,9 @@ const ArticleShow = (props: ArticleShowPorps) => {
           </div>
         )}
         <div className={styles['content']}>
-          <Vditor value={props.mainText} mode="render" />
+          <Spin spinning={props.mainText === undefined ? true : false}>
+            <Vditor value={props.mainText} mode="render" />
+          </Spin>
         </div>
       </Typography>
       {!preview && (

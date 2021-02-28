@@ -17,6 +17,7 @@ const IndexPage = () => {
   );
   const dispatch = useDispatch<any>();
   const handleLogin = () => {
+    console.log(loginApi.url, loginForm.current?.getFieldValues());
     axios({
       url: loginApi.url,
       method: loginApi.method,

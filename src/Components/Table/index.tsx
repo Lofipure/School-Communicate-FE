@@ -13,7 +13,6 @@ interface TableProps {
 const TableComponent: React.FC<TableProps> = (props: TableProps) => {
   const [data, setData] = React.useState<Array<any>>();
   const [tableStatus, setTableStatus] = React.useState<boolean>(true);
-
   React.useEffect(() => {
     axios({
       method: props.Api?.method,

@@ -27,11 +27,11 @@ const LayoutContainer: React.FC<{}> = (props) => {
               </Sider>
             )}
           <Layout>
-            <Content className="layout-content"> {props.children}</Content>
+            <Content className="layout-content">{props.children}</Content>
           </Layout>
         </Layout>
         <Footer className="layout-footer">
-          XUST School Mate Group © 2021 王子恒
+          School Mate Group © 2021 王子恒
         </Footer>
       </Layout>
     </Provider>

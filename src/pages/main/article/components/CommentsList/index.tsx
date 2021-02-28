@@ -21,6 +21,7 @@ import {
 } from '@ant-design/icons';
 import moment from 'moment';
 import './index.less';
+import { PLACEHOLDER } from '@/constant';
 interface CommentsListProps {
   aId?: string;
   uId?: string;
@@ -78,7 +79,7 @@ const CommentsList = (props: CommentsListProps) => {
             <List.Item>
               <Comment
                 key={index}
-                author={item.commenterInfo.name}
+                author={item.commenterInfo?.name || PLACEHOLDER}
                 content={item.commentText}
                 datetime={
                   <Tooltip
@@ -94,8 +95,8 @@ const CommentsList = (props: CommentsListProps) => {
                 avatar={
                   <Avatar
                     src={
-                      item.commenterInfo.avatar
-                        ? item.commenterInfo.avatar
+                      item.commenterInfo?.avatar
+                        ? item.commenterInfo?.avatar
                         : 'http://114.116.246.240/static/wangziheng.42e14961.png'
                     }
                   />
@@ -111,7 +112,7 @@ const CommentsList = (props: CommentsListProps) => {
                     被点赞 {item.getGoodNumber}次
                   </Button>,
                   <span>
-                    {item.commenterInfo.uId == props.uId ? (
+                    {item.commenterInfo?.uId == props.uId ? (
                       <Tag
                         className="comment-tag"
                         icon={<CoffeeOutlined />}

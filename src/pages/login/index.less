@@ -1,0 +1,24 @@
+.container {
+  &__left {
+    float: left;
+    height: 100vh;
+    width: 70vw;
+    background-image: url('../../image/bg.png');
+    background-size: cover;
+  }
+
+  &__right {
+    float: left;
+    height: 100vh;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &__header {
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+  }
+}

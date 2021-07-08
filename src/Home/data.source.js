@@ -125,7 +125,7 @@ export const Feature00DataSource = {
               name: 'content',
               children: (
                 <span>
-                  <p>专注于交流于分型</p>
+                  <p>专注于交流</p>
                 </span>
               ),
             },

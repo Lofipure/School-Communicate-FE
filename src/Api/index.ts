@@ -120,6 +120,11 @@ const getOrderedArticleList: AxiosRequestConfig = {
   url: `${ROOT_PATH}/getOrderedArticleList`,
   method: 'GET',
 };
+
+const uploadImg: AxiosRequestConfig = {
+  url: 'http://114.116.246.240:1188/upload',
+  method: 'POST',
+};
 export {
   getOrderedArticleList,
   getArticleNumberFromEmail,
@@ -145,4 +150,5 @@ export {
   getAllTag,
   getAllTagDetailInfo,
   getUserArticle,
+  uploadImg,
 };

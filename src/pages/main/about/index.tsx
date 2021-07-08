@@ -29,11 +29,12 @@ import {
 import InfoForm from '@/Components/InfoForm';
 import PersonalData from './Components/PersonData';
 
-import './index.less';
 import { UserInfo } from 'typings';
 import { PLACEHOLDER } from '@/constant';
 import { history } from 'umi';
 import { TagOutlined, BookOutlined, DatabaseOutlined } from '@ant-design/icons';
+
+import './index.less';
 
 const { TabPane } = Tabs;
 const AboutPage = () => {

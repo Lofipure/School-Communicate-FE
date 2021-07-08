@@ -471,7 +471,7 @@ const filterConfig: FilterConfig[] = [
     label: '头像',
     options: {},
     span: 20,
-    widget: <UploadAvatar />,
+    widget: <Input type="file" id="avatar_uploader" placeholder="请上传头像" />,
   },
   {
     key: 'email',

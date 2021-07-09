@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { Layout } from 'antd';
-import { Provider } from 'react-redux';
-import store from '@/store';
 import { history } from 'umi';
 import MyHeader from '../Components/MyHeader';
 import SideBar from '../Components/SideBar';
@@ -12,7 +10,7 @@ const { Content, Sider, Footer } = Layout;
 
 const LayoutContainer: React.FC<{}> = (props) => {
   return (
-    <Provider store={store}>
+    <>
       {['/', '/register', '/login'].includes(history.location.pathname) ? (
         <div>
           {history.location.pathname === '/' ? (
@@ -46,7 +44,7 @@ const LayoutContainer: React.FC<{}> = (props) => {
           </Footer>
         </Layout>
       )}
-    </Provider>
+    </>
   );
 };
 

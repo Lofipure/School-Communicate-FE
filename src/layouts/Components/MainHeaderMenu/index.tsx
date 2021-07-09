@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Menu, Dropdown } from 'antd';
 import { useDispatch } from 'react-redux';
-import { loginModalStatusActionCreator } from '@/store/actionCreator';
 import { history } from 'umi';
 import {
   indexMainPageConfig,
@@ -11,25 +10,13 @@ import {
 import './index.less';
 import { MenuFoldOutlined } from '@ant-design/icons';
 const HeaderMenu: React.FC<{}> = () => {
-  const dispatch = useDispatch<any>();
   return (
     <React.Fragment>
       <Menu mode="horizontal" className="header-menu" theme="dark">
         {history.location.pathname === '/' && (
           <>
             {indexMainPageConfig.map((item) => (
-              <Menu.Item
-                key={item.key}
-                title={item.title}
-                icon={item.icon}
-                onClick={
-                  item.onClick
-                    ? item.onClick
-                    : () => {
-                        dispatch(loginModalStatusActionCreator(true));
-                      }
-                }
-              >
+              <Menu.Item key={item.key} title={item.title} icon={item.icon}>
                 {item.text}
               </Menu.Item>
             ))}
@@ -73,18 +60,7 @@ const HeaderMenu: React.FC<{}> = () => {
             {history.location.pathname === '/' && (
               <>
                 {indexMainPageConfig.map((item) => (
-                  <Menu.Item
-                    key={item.key}
-                    title={item.title}
-                    icon={item.icon}
-                    onClick={
-                      item.onClick
-                        ? item.onClick
-                        : () => {
-                            dispatch(loginModalStatusActionCreator(true));
-                          }
-                    }
-                  >
+                  <Menu.Item key={item.key} title={item.title} icon={item.icon}>
                     {item.text}
                   </Menu.Item>
                 ))}

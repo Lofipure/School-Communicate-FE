@@ -58,11 +58,17 @@ export const getUserInfo = (
 
 export const modifiedFilterConfig: FilterConfig[] = [
   {
-    key: 'avatar',
+    key: '_avatar',
     label: '头像',
     options: {},
     span: 18,
-    widget: <UploadAvatar />,
+    widget: (
+      <Input
+        type="file"
+        id="avatar_uploader_for_mod"
+        placeholder="请上传头像"
+      />
+    ),
   },
   {
     key: 'email',

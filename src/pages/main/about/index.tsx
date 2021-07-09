@@ -14,6 +14,7 @@ import {
   createTag,
   getAllTagDetailInfo,
   getUserArticle,
+  uploadImg,
 } from '@/Api';
 import TableComponent from '@/Components/Table';
 import axios from 'axios';
@@ -99,19 +100,40 @@ const AboutPage = () => {
   }, []);
 
   const modifiedUserInfo = () => {
+    // avatar_uploader_for_mod
+    const fileElement = document.getElementById(
+      'avatar_uploader_for_mod',
+    ) as HTMLInputElement;
+    if (!fileElement) {
+      message.error('请上传头像');
+      return;
+    }
+    const file = (fileElement as any).files[0];
+    const formData = new FormData();
+    formData.append('file', file);
     axios({
-      url: updateUserInfo.url,
-      method: updateUserInfo.method,
-      data: modifiedForm.current?.getFieldValues(),
-    })
-      .then((res) => {
-        res.data ? message.success('修改成功') : message.error('修改失败');
-        modifiedForm.current?.resetForm();
+      url: uploadImg.url,
+      method: uploadImg.method,
+      data: formData,
+    }).then((res) => {
+      const avatarURL = 'http://114.116.246.240:1188/img/' + res.data.name;
+      axios({
+        url: updateUserInfo.url,
+        method: updateUserInfo.method,
+        data: {
+          ...modifiedForm.current?.getFieldValues(),
+          avatar: avatarURL,
+        },
       })
-      .finally(() => {
-        setModifiedModalStatus(false);
-        updateShowData();
-      });
+        .then((res) => {
+          res.data ? message.success('修改成功') : message.error('修改失败');
+          modifiedForm.current?.resetForm();
+        })
+        .finally(() => {
+          setModifiedModalStatus(false);
+          updateShowData();
+        });
+    });
   };
   return (
     <React.Fragment>
